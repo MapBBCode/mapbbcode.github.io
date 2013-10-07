@@ -22,6 +22,8 @@ var mapBB = new MapBBCode({
     defaultPosition: [59.95, 30.3],
     defaultZoom: 13,
     viewWidth: '100%',
+    windowWidth: 800,
+    windowHeight: 500,
     layers: ['MapSurfer', 'OpenStreetMap', 'Bing Satellite:Arzdiw4nlOJzRwOz__qailc8NiR31Tt51dN2D7cm57NrnceZnCpgOkmJhNpGoppU']
 });
 </script>
@@ -31,7 +33,7 @@ var mapBB = new MapBBCode({
 <p>It is sad to see that while maps and geodata are trending, there is no reasonable solution to embed maps
 in any of forum engines. Users of <a href="http://www.skyscrapercity.com/">SkyscraperCity</a>, the leading forum on
 tall buildings, transport infrastructure and urban development, cannot use maps to show what they are discussing.
-Cycling forums don't have route maps in their weekend journeys topics. Hikers cannot put photos taken in a recent
+Cycling forums don't have route maps in their weekend journeys topics. Hikers cannot place photos taken in a recent
 trip on a map. Offroad clubs still have to rely on arrays of GPS waypoints for their activities.</p>
 
 <p>Meanwhile, recent technological advancements in web mapping, namely <a href="http://leafletjs.com">Leaflet</a>
@@ -39,9 +41,27 @@ library and its plugins, made it possible to create a simple solution for embedd
 expected, but here is the library for parsing, displaying and editing [map] bbcode contents. With luck, this tag will
 become as common on forums as [img] and [url].</p>
 
-<div id="sample">[map]60,30(OK); 60.01,30.01 60.02,30.015[/map]</div>
-<div style="text-align: center; font-size: 8pt;">[map]60,30(OK); 60.01,30.01 60.02,30.015[/map]</div>
-<script>mapBB.show('sample');</script>
+<div id="sample"></div>
+<div style="float: right; width: 100px;">
+<input type="button" value="Update" onclick="javascript:update();" style="width: 100%; height: 26px;"><br>
+<input type="button" value="Edit" onclick="javascript:edit();" style="width: 100%; height: 26px;">
+</div>
+<textarea id="code" style="width: 490px; max-width: 490px; height: 48px;">[map]60,30(OK); 60.01,30.01 60.02,30.015[/map]</textarea>
+<script>
+var code = document.getElementById('code');
+function update() {
+    mapBB.show('sample', code.value);
+}
+function edit() {
+    mapBB.editorWindow(code.value, function(res) {
+        if( res !== null ) {
+            code.value = res;
+            update();
+        }
+    });
+}
+update();
+</script>
 
 <p style="font-style: italic;">The rest of this page is coming soon.
 See the <a href="https://github.com/MapBBCode/mapbbcode">library repository</a> for source code and examples.</p>
