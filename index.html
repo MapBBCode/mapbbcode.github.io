@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MapBBCode</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="lib/leaflet.css" />
+<link rel="stylesheet" href="lib/leaflet.draw.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="lib/leaflet.ie.css" />
+    <link rel="stylesheet" href="lib/leaflet.draw.ie.css" />
+<![endif]-->
+<script src="lib/leaflet.js"></script>
+<script src="lib/leaflet.draw.js"></script>
+<script src="lib/Bing.js"></script>
+<script src="lib/mapbbcode.js"></script>
+<script src="lib/mapbbcode-config.js"></script>
+</head>
+<body>
+<script>
+var mapBB = new MapBBCode({
+    defaultPosition: [59.95, 30.3],
+    defaultZoom: 13,
+    viewWidth: '100%',
+    layers: ['MapSurfer', 'OpenStreetMap', 'Bing Satellite:Arzdiw4nlOJzRwOz__qailc8NiR31Tt51dN2D7cm57NrnceZnCpgOkmJhNpGoppU']
+});
+</script>
+
+<h1>[map] BBCode</h1>
+
+<p>It is sad to see that while maps and geodata are trending, there is no reasonable solution to embed maps
+in any of forum engines. Users of <a href="http://www.skyscrapercity.com/">SkyscraperCity</a>, the leading forum on
+tall buildings, transport infrastructure and urban development, cannot use maps to show what they are discussing.
+Cycling forums don't have route maps in their weekend journeys topics. Hikers cannot put photos taken in a recent
+trip on a map. Offroad clubs still have to rely on arrays of GPS waypoints for their activities.</p>
+
+<p>Meanwhile, recent technological advancements in web mapping, namely <a href="http://leafletjs.com">Leaflet</a>
+library and its plugins, made it possible to create a simple solution for embedding maps in forums. It took a bit longer than
+expected, but here is the library for parsing, displaying and editing [map] bbcode contents. With luck, this tag will
+become as common on forums as [img] and [url].</p>
+
+<div id="sample">[map]60,30(OK); 60.01,30.01 60.02,30.015[/map]</div>
+<div style="text-align: center; font-size: 8pt;">[map]60,30(OK); 60.01,30.01 60.02,30.015[/map]</div>
+<script>mapBB.show('sample');</script>
+
+<p style="font-style: italic;">The rest of this page is coming soon.
+See the <a href="https://github.com/MapBBCode/mapbbcode">library repository</a> for source code and examples.</p>
+
+</body>
+</html>
