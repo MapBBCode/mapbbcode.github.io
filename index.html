@@ -70,11 +70,9 @@ function replaceMap() {
     mapBB.options.defaultPosition = [66.03587,-112.80762];
     mapBB.options.defaultZoom = 5;
     mapBB.options.createLayers = function(L) {
-        return [L.tileLayer('/got_hbo/{z}-{x}-{y}.jpg', { name: 'Known World', attribution: '&copy; HBO', minZoom: 2, maxZoom: 5 })];
+        return [L.tileLayer('got_hbo/{z}-{x}-{y}.jpg', { name: 'Known World', attribution: '&copy; HBO', minZoom: 3, maxZoom: 5 })];
     };
-    mapBB.leafletOptions = {
-// todo: bounds
-    };
+    mapBB.options.leafletOptions = { maxBounds: [[18, -180], [85, 68.3]] };
     code.value = '[map]66.6,-112.4(todo: conquer)[/map]';
     update();
 }
@@ -87,14 +85,11 @@ function replaceMap() {
 <li><b>phpBB 3</b>: <i>coming soon</i></li>
 </ul>
 
-<p>Please help us expand this list! There is an extensive <a href="https://github.com/MapBBCode/mapbbcode/blob/master/EMBEDDING.md">documentation<a> on integrating [map] bbcode with forum engines. And it doesn't even have to be a forum: <a href="https://github.com/MapBBCode/mapbbcode/blob/master/BBCODE.md">the format</a> is universal and does not have to be bbcode. And does not require using <a href="#sample" onclick="javascript:replaceMap(); return true;">actual maps</a>. You can use the <a href="https://github.com/MapBBCode/mapbbcode">JavaScript library</a> in your project to display maps or to provide a complete mapping experience for your users. Check the <a href="https://github.com/MapBBCode/mapbbcode/blob/master/API.md">API reference</a>: it is simple and powerful. To showcase it, we have made an <a href="https://github.com/MapBBCode/share.mapbbcode.org">open-source</a> website to create and share user maps:</p>
+<p>Please help us expand this list! There is an extensive <a href="https://github.com/MapBBCode/mapbbcode/blob/master/EMBEDDING.md">documentation<a> on integrating [map] bbcode with forum engines. And it doesn't even have to be a forum: <a href="https://github.com/MapBBCode/mapbbcode/blob/master/BBCODE.md">the format</a> is universal and does not have to be bbcode. And does not rely on using <a href="#sample" onclick="javascript:replaceMap(); return true;">actual maps</a>. You can use the <a href="https://github.com/MapBBCode/mapbbcode">JavaScript library</a> in your project to display maps or to provide a complete mapping experience for your users. Check the <a href="https://github.com/MapBBCode/mapbbcode/blob/master/API.md">API reference</a>: it is simple and powerful. To showcase it, we have made an <a href="https://github.com/MapBBCode/share.mapbbcode.org">open-source</a> website to create and share user maps:</p>
 
 <div id="share"><a href="http://share.mapbbcode.org">share.mapbbcode.org</a></div>
 
-<p style="font-style: italic;">The rest of this page is coming soon.
-See the <a href="https://github.com/MapBBCode/mapbbcode">library repository</a> for source code and examples.</p>
-
-<p>The MapBBCode library and some of examples are written by Ilya Zverev and published under WTFPL license where possible.</p>
+<p>The MapBBCode library and most examples are written by Ilya Zverev and published under WTFPL license where possible.</p>
 
 </body>
 </html>
