@@ -70,7 +70,7 @@ function replaceMap() {
     mapBB.options.defaultPosition = [66.03587,-112.80762];
     mapBB.options.defaultZoom = 5;
     mapBB.options.createLayers = function(L) {
-        return [L.tileLayer('got_hbo/{z}-{x}-{y}.jpg', { name: 'Known World', attribution: '&copy; HBO', minZoom: 2, maxZoom: 5 })];
+        return [L.tileLayer('/got_hbo/{z}-{x}-{y}.jpg', { name: 'Known World', attribution: '&copy; HBO', minZoom: 2, maxZoom: 5 })];
     };
     mapBB.leafletOptions = {
 // todo: bounds
