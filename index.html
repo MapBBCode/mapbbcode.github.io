@@ -14,7 +14,6 @@
 <script src="lib/leaflet.draw.js"></script>
 <script src="lib/Bing.js"></script>
 <script src="lib/mapbbcode.js"></script>
-<script src="lib/LayerList.js"></script>
 </head>
 <body>
 <script>
@@ -25,7 +24,11 @@ var mapBB = new MapBBCode({
     windowWidth: 800,
     windowHeight: 500,
     fullFromStart: true,
-    layers: ['OpenMapSurfer', 'OpenStreetMap', 'Bing Satellite:Arzdiw4nlOJzRwOz__qailc8NiR31Tt51dN2D7cm57NrnceZnCpgOkmJhNpGoppU']
+    createLayers: function(L) { return [
+        L.tileLayer('http://129.206.74.245:8001/tms_r.ashx?x={x}&y={y}&z={z}', { name: 'MapSurfer', attribution: 'Map &copy; <a href=\"http://openstreetmap.org\">OSM</a> | Tiles &copy; <a href=\"http://giscience.uni-hd.de/\">GIScience Heidelberg</a>', minZoom: 0, maxZoom: 19 }),
+        'OSM',
+//        new L.BingLayer('Arzdiw4nlOJzRwOz__qailc8NiR31Tt51dN2D7cm57NrnceZnCpgOkmJhNpGoppU')
+    ]}
 });
 </script>
 
@@ -62,10 +65,36 @@ function edit() {
     });
 }
 update();
+
+function replaceMap() {
+    mapBB.options.defaultPosition = [66.03587,-112.80762];
+    mapBB.options.defaultZoom = 5;
+    mapBB.options.createLayers = function(L) {
+        return [L.tileLayer('got_hbo/{z}-{x}-{y}.jpg', { name: 'Known World', attribution: '&copy; HBO', minZoom: 2, maxZoom: 5 })];
+    };
+    mapBB.leafletOptions = {
+// todo: bounds
+    };
+    code.value = '[map][/map]';
+    update();
+}
 </script>
+
+<p>Map BBCode can be integrated into your installation of:</p>
+
+<ul>
+<li><b>phpBB 2</b>: <a href="https://github.com/MapBBCode/mapbb-phpbb2/raw/master/dist/mapbbcode_mod.zip">MOD</a> (EasyMOD-compatible), <a href="https://github.com/MapBBCode/mapbb-phpbb2">Github Repository</a></li>
+<li><b>phpBB 3</b>: <i>coming soon</i></li>
+</ul>
+
+<p>Please help us expand this list! There is an extensive <a href="https://github.com/MapBBCode/mapbbcode/blob/master/EMBEDDING.md">documentation<a> on integrating [map] bbcode with forum engines. And it doesn't even have to be a forum: <a href="https://github.com/MapBBCode/mapbbcode/blob/master/BBCODE.md">the format</a> is universal and does not have to be bbcode. And does not require using <a href="#sample" onclick="javascript:replaceMap(); return true;">actual maps</a>. You can use the <a href="https://github.com/MapBBCode/mapbbcode">JavaScript library</a> in your project to display maps or to provide a complete mapping experience for your users. Check the <a href="https://github.com/MapBBCode/mapbbcode/blob/master/API.md">API reference</a>: it is simple and powerful. To showcase it, we have made an <a href="https://github.com/MapBBCode/share.mapbbcode.org">open-source</a> website to create and share user maps:</p>
+
+<div id="share"><a href="http://share.mapbbcode.org">share.mapbbcode.org</a></div>
 
 <p style="font-style: italic;">The rest of this page is coming soon.
 See the <a href="https://github.com/MapBBCode/mapbbcode">library repository</a> for source code and examples.</p>
+
+<p>The MapBBCode library and some of examples are written by Ilya Zverev and published under WTFPL license where possible.</p>
 
 </body>
 </html>

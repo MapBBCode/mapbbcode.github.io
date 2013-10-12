@@ -25,3 +25,13 @@ h2 {
 	font-size: 16pt;
 	font-weight: 700;
 }
+
+#share a {
+	display: block;
+	padding: 20px 0;
+	border: 1px solid #ccf;
+	border-radius: 10px;
+	width: 250px;
+	margin: 25px auto;
+	text-align: center;
+}
