@@ -81,8 +81,8 @@ function replaceMap() {
 <p>Map BBCode can be integrated into your installation of:</p>
 
 <ul>
-<li><b>phpBB 2</b>: <a href="https://github.com/MapBBCode/mapbb-phpbb2/raw/master/dist/mapbbcode_mod.zip">MOD</a> (EasyMOD-compatible), <a href="https://github.com/MapBBCode/mapbb-phpbb2">Github Repository</a></li>
-<li><b>phpBB 3</b>: <i>coming this week</i></li>
+<li><b>phpBB 2</b>: <a href="https://github.com/MapBBCode/mapbb-phpbb2/raw/master/dist/mapbbcode_mod.zip">Download MOD</a> (EasyMOD-compatible), <a href="https://github.com/MapBBCode/mapbb-phpbb2">Github Repository</a></li>
+<li><b>phpBB 3</b>: <a href="https://github.com/MapBBCode/mapbb-phpbb3/raw/master/dist/mapbbcode_mod.zip">Download MOD</a>, <a href="https://github.com/MapBBCode/mapbb-phpbb3">Github Repository</a></li>
 </ul>
 
 <p>Please help us expand this list! There is an extensive <a href="https://github.com/MapBBCode/mapbbcode/blob/master/EMBEDDING.md">documentation<a> on integrating [map] bbcode with forum engines. And it doesn't even have to be a forum: <a href="https://github.com/MapBBCode/mapbbcode/blob/master/BBCODE.md">the format</a> is universal and does not have to be bbcode. And does not rely on using <a href="#sample" onclick="javascript:replaceMap(); return true;">actual maps</a>. You can use the <a href="https://github.com/MapBBCode/mapbbcode">JavaScript library</a> in your project to display maps or to provide a complete mapping experience for your users. Check the <a href="https://github.com/MapBBCode/mapbbcode/blob/master/API.md">API reference</a>: it is simple and powerful. To showcase it, we have made an <a href="https://github.com/MapBBCode/share.mapbbcode.org">open-source</a> website to create and share user maps:</p>
@@ -91,5 +91,21 @@ function replaceMap() {
 
 <p>The MapBBCode library and most examples are written by Ilya Zverev and published under WTFPL license where possible.</p>
 
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.mapbbcode.org","*.share.mapbbcode.org"]]);
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.textual.ru/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "6"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
 </body>
 </html>
