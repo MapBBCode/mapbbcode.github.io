@@ -6,7 +6,6 @@
 <script src="leaflet.draw.js"></script>
 <script src="Bing.js"></script>
 <script src="mapbbcode.js"></script>
-<script src="mapbbcode-config.js"></script>
 <link rel="stylesheet" href="leaflet.css">
 <link rel="stylesheet" href="leaflet.draw.css">
 <!--[if lte IE 8]>
@@ -23,7 +22,7 @@ function edit() {
     var stored = opener.storedMapBB;
     var mapBB = new MapBBCode(stored.caller.options);
     mapBB.setStrings(stored.caller.strings);
-    mapBB.options.editorHeight = '100%';
+    mapBB.options.editorHeight = 0;
     mapBB.editor('edit', stored.bbcode, function(res) {
         window.close();
         if( stored.callback )
