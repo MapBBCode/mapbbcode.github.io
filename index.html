@@ -24,6 +24,7 @@ var mapBB = new MapBBCode({
     windowWidth: 800,
     windowHeight: 500,
     fullFromStart: true,
+    uploadButton: true,
     createLayers: function(L) { return [
         L.tileLayer('http://129.206.74.245:8001/tms_r.ashx?x={x}&y={y}&z={z}', { name: 'OpenMapSurfer', attribution: 'Map &copy; <a href=\"http://openstreetmap.org\">OSM</a> | Tiles &copy; <a href=\"http://giscience.uni-hd.de/\">GIScience Heidelberg</a>', minZoom: 0, maxZoom: 19 }),
         'OSM',
@@ -52,9 +53,14 @@ become as common on forums as [img] and [url].</p>
 </div>
 <textarea id="code" style="width: 490px; max-width: 490px; height: 48px;">[map]59.9342,30.3367(S); 59.4366,24.7529(F); 59.377,28.204(Border control); 59.934,30.337 59.718,30.037 59.39,28.532 59.372,27.444 59.428,26.807 59.367,26.433 59.469,26.016 59.437,24.753[/map]</textarea>
 <script>
-var code = document.getElementById('code');
+var code = document.getElementById('code'),
+    sharedRE = new RegExp('^\\s*\\[mapid\\]\\s*([a-z]+)\\s*\\[/mapid\\]\\s*$');
 function update() {
-    mapBB.show('sample', code.value);
+    var m = sharedRE.exec(code.value);
+    if( m )
+        mapBB.showExternal('sample', m[1]);
+    else
+        mapBB.show('sample', code.value);
 }
 function edit() {
     mapBB.editorWindow(code.value, function(res) {
