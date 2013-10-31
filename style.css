@@ -29,9 +29,12 @@ h2 {
 #share a {
 	display: block;
 	padding: 20px 0;
-	border: 1px solid #ccf;
+        background-color: #ddf;
+        color: blue;
+        text-decoration: none;
+        font-size: 13pt;
 	border-radius: 10px;
-	width: 250px;
+	width: 260px;
 	margin: 25px auto;
 	text-align: center;
 }
