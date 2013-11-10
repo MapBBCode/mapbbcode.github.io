@@ -1,0 +1,15 @@
+{% assign languages = 'en,ru' | split: ',' %}
+{% assign pagelangs = page.url | split: '/' %}
+{% assign pagelangss = pagelangs.size | minus: 2 %}
+{% assign pagelang = pagelangs[pagelangss] %}
+{% unless pagelang.size == 2 %}
+{% assign pagelang = 'en' %}
+{% endunless %}
+<div id="langbar">
+{% for lang in languages %}
+{% if lang != pagelang %}<a href="{% if lang != 'en' %}/{{ lang }}{% endif %}/{{ page.url | split: '/' | last }}">{{ lang }}</a>
+{% else %}{{ lang }}
+{% endif %}
+{% endfor %}
+| {% if page.toc %}<a href="index.html">home</a>{% else %}<a href="toc.html">docs</a>{% endif %}
+</div>

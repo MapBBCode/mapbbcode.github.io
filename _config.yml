@@ -1,0 +1,4 @@
+markdown: redcarpet
+pygments: true
+redcarpet:
+    extensions: ["fenced_code_blocks", "tables", "with_toc_data"]

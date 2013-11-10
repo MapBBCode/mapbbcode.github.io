@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/lib/leaflet.css" />
+<link rel="stylesheet" href="/lib/leaflet.draw.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="/lib/leaflet.ie.css" />
+    <link rel="stylesheet" href="/lib/leaflet.draw.ie.css" />
+<![endif]-->
+<script src="/lib/leaflet.js"></script>
+<script src="/lib/leaflet.draw.js"></script>
+<script src="/lib/Bing.js"></script>
+<script src="/lib/mapbbcode.js"></script>
+<script src="/lib/lang/{{ page.maplang }}.js"></script>
+<script>
+var mapBB, code,
+    sharedRE = new RegExp('^\\s*\\[mapid\\]\\s*([a-z]+)\\s*\\[/mapid\\]\\s*$');
+
+window.onload = function() {
+	mapBB = new MapBBCode({
+		defaultPosition: [59.95, 30.3],
+		defaultZoom: 13,
+		fullViewHeight: 300,
+		windowWidth: 800,
+		windowHeight: 500,
+		fullFromStart: true,
+		uploadButton: true,
+		createLayers: function(L) { return [
+			L.tileLayer('http://129.206.74.245:8001/tms_r.ashx?x={x}&y={y}&z={z}', { name: 'OpenMapSurfer', attribution: 'Map &copy; <a href=\"http://openstreetmap.org\">OSM</a> | Tiles &copy; <a href=\"http://giscience.uni-hd.de/\">GIScience Heidelberg</a>', minZoom: 0, maxZoom: 19 }),
+			MapBBCode.prototype.createOpenStreetMapLayer(),
+			L.bingLayer('AjO5XVNDp_3dZ1fa3MQs4lsJQP7MCYrHFxXFvi0yHCxpfNW1EaFZ_Ik5HecRHdSi', { name: 'Bing Satellite' })
+		]}
+	});
+
+	code = document.getElementById('code');
+	update();
+}
+
+function update() {
+    var m = sharedRE.exec(code.value);
+    if( m )
+        mapBB.showExternal('sample', m[1]);
+    else
+        mapBB.show('sample', code.value);
+}
+
+function edit() {
+    mapBB.editorWindow(code.value, function(res) {
+        if( res !== null ) {
+            code.value = res;
+            update();
+        }
+    });
+}
+
+function replaceMap() {
+	window.MapBBCodeProcessor.options.decimalDigits = 1;
+    mapBB.options.defaultPosition = [66.04,-112.8];
+    mapBB.options.defaultZoom = 5;
+    mapBB.options.createLayers = function(L) {
+        return [L.tileLayer('/got_hbo/{z}-{x}-{y}.jpg', { name: 'Known World', attribution: '&copy; HBO', minZoom: 3, maxZoom: 5 })];
+    };
+    mapBB.options.leafletOptions = { maxBounds: [[18, -180], [85, 68.3]] };
+    code.value = '[map]66.6,-112.4(todo: conquer)[/map]';
+    update();
+}
+</script>

@@ -4,13 +4,22 @@ body,html {
 	color: #222;
 	background-color: white;
 	font-size: 12pt;
-	font-family: sans-serif;
+	font-family: Arial, sans-serif;
 }
 
 body {
-	max-width: 600px;
-	margin: 30px auto;
-        line-height: 1.5;
+	max-width: 700px;
+	margin: 0 auto;
+	line-height: 1.5;
+}
+
+#langbar {
+	text-align: center;
+	font-size: 10pt;
+	color: #555;
+}
+#langbar a {
+	color: blue;
 }
 
 h1 {
@@ -18,7 +27,7 @@ h1 {
 	font-size: 20pt;
 	text-align: center;
 	color: #111;
-	margin: 0 0;
+	margin: 20px 0 0;
 }
 
 h2 {
@@ -29,12 +38,31 @@ h2 {
 #share a {
 	display: block;
 	padding: 20px 0;
-        background-color: #ddf;
-        color: blue;
-        text-decoration: none;
-        font-size: 13pt;
+	background-color: #ddf;
+	color: blue;
+	text-decoration: none;
+	font-size: 13pt;
 	border-radius: 10px;
 	width: 260px;
 	margin: 25px auto;
 	text-align: center;
 }
+
+/* markdown stuff */
+
+code, pre {
+	background: #f4f4f4;
+	font-size: 10pt;
+}
+pre {
+	padding: 4px 6px;
+}
+
+code .s2, code .s1, code .s { color: #d14; }
+code .cp { color: #888; font-weight: bold; }
+code .nt { color: #000080; }
+code .na, code .nb { color: #008080; }
+code .kd, code .kc, code .k, code .o { font-weight: bold; }
+code .c, code .c1 { color: #888; font-style: italic; }
+code .mi { color: #099; }
+
