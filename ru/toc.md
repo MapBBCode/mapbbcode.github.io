@@ -9,9 +9,9 @@ toc: true
 * [Руководство пользователя](guide.html)
 * [Руководство администратора](admin.html)
 * [Спецификация bb-кода](bbcode.html)
-* [Справочник по API](api.html)
+* [Справочник по API](../api.html) (англ.)
 * [Часто задаваемые вопросы](faq.html)
-* [Как внедрить MapBBCode](embedding.html)
+* [Как внедрить MapBBCode](../embedding.html) (англ.)
 * [MapBBCode на форумах](forums.html)
 
 Также:
