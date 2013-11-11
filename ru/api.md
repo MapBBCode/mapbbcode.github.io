@@ -220,3 +220,9 @@ An export button for maps downloaded from an external service. Gets the supporte
 | `codeid` | String | `''` | Identifier of a map to export.
 | `types` | String[] | `[]` | List of supported formats (if empty, then it is downloaded).
 | `titles` | String[] | `[]` | Titles for supported formats (if empty, then it is downloaded).
+
+## L.Control.PermalinkAttribution
+
+Replaces `L.Control.Attribution` with itself, so you won't have to do anything besides including the plugin script. Makes OpenStreetMap links in attribution into permanent links to the displayed place on osm.org website.
+
+An option `attributionEditLink` is added to `L.Map` class. If it is set to `true`, OSM links will be followed by an edit link.
