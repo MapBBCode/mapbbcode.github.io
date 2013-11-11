@@ -4,23 +4,24 @@ maplang: Russian
 ---
 <h1>[map] BBCode</h1>
 
-<p>It is sad to see that while maps and geodata are trending, there is no reasonable solution to embed maps
-in any of forum engines. Users of <a href="http://www.skyscrapercity.com/">SkyscraperCity</a>, the leading forum on
-tall buildings, transport infrastructure and urban development, cannot use maps to show what they are discussing.
-Cycling forums don't have route maps in their weekend journeys topics. Hikers cannot place photos taken in a recent
-trip on a map. Offroad clubs still have to rely on arrays of GPS waypoints for their activities.</p>
+<p>Грустно видеть, что хотя в целом карты и геоданные сейчас на пике популярности, до сих пор не было способа
+вставить карты в хотя бы один из форумных движков. Участники <a href="http://www.skyscrapercity.com/">SkyscraperCity</a>,
+крупнейшего форума про высотные здания, транспортную инфраструктуру и городское планирование, не могут с помощью
+карты указать предмет обсуждения. Велофорумы обходятся без схем маршрутов в темах про поездки выходного дня.
+Туристы не могут расставить собранные в походе фотографии на карте. Члены внедорожных клубов до сих пор
+используют файлы с GPS-точками для своих мероприятий.</p>
 
-<p>Meanwhile, recent technological advancements in web mapping, namely <a href="http://leafletjs.com">Leaflet</a>
-library and its plugins, made it possible to create a simple solution for embedding maps in forums. It took a bit longer than
-expected, but here is the library for parsing, displaying and editing <a href="bbcode.html">[map] bbcode</a> contents. With luck, this tag will
-become as common on forums as [img] and [url].</p>
+<p>Тем не менее, прогресс в сетевой картографии, в частности, библиотека <a href="http://leafletjs.com">Leaflet</a>
+и плагины к ней, сделали возможным простые решения для вставки карт на форумы. В конце ноября была, наконец, выпущена
+библиотека для обработки, отображения и редактирования <a href="bbcode.html">bb-кода [map]</a>. Вполне вероятно,
+что со временем этот тег станет так же привычен на форумах, как [img] и [url].</p>
 
 <div id="sample"></div>
 <div style="float: right; width: 100px;">
 	<input type="button" value="Обновить" onclick="javascript:update();" style="width: 100%; height: 26px;"><br>
 	<input type="button" value="Править" onclick="javascript:edit();" style="width: 100%; height: 26px;">
 </div>
-<textarea id="code" style="width: 590px; max-width: 590px; height: 48px;">[map]59.9342,30.3367(S); 59.4366,24.7529(F); 59.377,28.204(Border control); 59.934,30.337 59.718,30.037 59.39,28.532 59.372,27.444 59.428,26.807 59.367,26.433 59.469,26.016 59.437,24.753[/map]</textarea>
+<textarea id="code" style="width: 590px; max-width: 590px; height: 48px;">[map]59.9342,30.3367(S); 59.4366,24.7529(F); 59.377,28.204(Погранконтроль); 59.934,30.337 59.718,30.037 59.39,28.532 59.372,27.444 59.428,26.807 59.367,26.433 59.469,26.016 59.437,24.753[/map]</textarea>
 
 <p>Скачать JavaScript-библиотеку MapBBCode:</p>
 
@@ -32,13 +33,13 @@ become as common on forums as [img] and [url].</p>
 <p>У вас, без сомнения, возникнут вопросы после изучения библиотеки. Ответы на некоторых из них <a href="faq.html">ищите в FAQ</a>. Код Map BBCode можно интегрировать в ваш сайт на:</p>
 
 <ul>
-<li><b>phpBB 2</b>: <a href="https://github.com/MapBBCode/mapbb-phpbb2/raw/master/dist/mapbbcode_mod.zip">Download MOD</a> (EasyMOD-compatible), <a href="https://github.com/MapBBCode/mapbb-phpbb2">GitHub Repository</a></li>
-<li><b>phpBB 3</b>: <a href="https://www.phpbb.com/community/viewtopic.php?f=70&amp;t=2205161">MOD Discussion</a>, <a href="https://github.com/MapBBCode/mapbb-phpbb3">GitHub Repository</a></li>
-<li><b>FUDforum</b>: <a href="https://github.com/MapBBCode/mapbb-fud/raw/master/dist/mapbbcode_fud.zip">Download MOD</a>, <a href="https://github.com/MapBBCode/mapbb-fud">GitHub Repository</a></li>
-<li><b>PunBB</b>: <a href="https://github.com/MapBBCode/mapbb-punbb/raw/master/dist/mapbbcode_punbb.zip">Download MOD</a>, <a href="https://github.com/MapBBCode/mapbb-punbb">GitHub Repository</a></li>
+<li><b>phpBB 2</b>: <a href="https://github.com/MapBBCode/mapbb-phpbb2/raw/master/dist/mapbbcode_mod.zip">Скачать MOD</a> (совместим с EasyMOD), <a href="https://github.com/MapBBCode/mapbb-phpbb2">GitHub</a></li>
+<li><b>phpBB 3</b>: <a href="https://www.phpbb.com/community/viewtopic.php?f=70&amp;t=2205161">Обсуждение MOD-а</a>, <a href="https://github.com/MapBBCode/mapbb-phpbb3">GitHub</a></li>
+<li><b>FUDforum</b>: <a href="https://github.com/MapBBCode/mapbb-fud/raw/master/dist/mapbbcode_fud.zip">Скачать плагин</a>, <a href="https://github.com/MapBBCode/mapbb-fud">GitHub</a></li>
+<li><b>PunBB</b>: <a href="https://github.com/MapBBCode/mapbb-punbb/raw/master/dist/mapbbcode_punbb.zip">Скачать плагин</a>, <a href="https://github.com/MapBBCode/mapbb-punbb">GitHub</a></li>
 </ul>
 
-<p>Please help us expand this list! There is an extensive <a href="embedding.html">documentation</a> on integrating [map] bbcode with forum engines. It doesn't even have to be a forum: blog and CMS plugins are also welcome. And does not rely on using <a href="#sample" onclick="javascript:replaceMap(); return true;">actual maps</a>. You can use the library in your project to display maps or to provide a complete mapping experience for your users. To showcase it, we have made an <a href="https://github.com/MapBBCode/share.mapbbcode.org">open-source</a> website to create and share user maps:</p>
+<p>Помогите нам удлиннить этот список! У нас есть подробное <a href="embedding.html">руководство</a> по внедрению кода [map] в форумные движки. Да и не обязательно форумные: плагины для блогов и CMS тоже приветствуются. Библиотека не требует использования <a href="#sample" onclick="javascript:replaceMap(); return true;">настоящих карт</a>. Подключите её к своему проекту для простого отображения карт, или чтобы позволить пользователям полноценно с ними работать. Для демонстрации возможностей библиотеки мы сделали сайт с <a href="https://github.com/MapBBCode/share.mapbbcode.org">открытым исходным кодом</a> для рисования и пересылки пользовательских карт:</p>
 
 <div id="share"><a href="http://share.mapbbcode.org">share.mapbbcode.org</a></div>
 
