@@ -64,6 +64,10 @@ Include the `Param.Measure.js` script from the MapBBCode repository, and the mea
 
 Because it is not obvious visually whether you can click on an object or not, unlike markers, which are made for being clicked. You can override this, of course, by modifying `Param.Text.js` and making a custom build.
 
+**Which layer is selected by default?**
+
+The first one. The topmost one in the configuration interface. Not the one that is selected when you press "save changes".
+
 **Layer order in a layer control differs from the order in `layers` property**
 
 This is a [Leaflet library issue](https://github.com/Leaflet/Leaflet/issues/2086).
@@ -78,13 +82,14 @@ window.layerList.list['Layer Name'] = 'L.tileLayer("http://...", { ... })';
 
 **Specifically, I want Google Maps in my forum**
 
-Google layers are not included because Google is evil. And sometimes charge for their maps. And you should promote free and open maps, that is, OSM. But of course there is a way to add google maps to a forum. Download Pavel's [Google.js](https://raw.github.com/shramov/leaflet-plugins/master/layer/tile/Google.js) and put it in the mapbbcode directory. Then add those lines after `mapbbcode-config.js` but before `new MapBBCode()`:
+Google layers are not included because Google is evil. And sometimes charge for their maps. And you should promote free and open maps, that is, OpenStreetMap. But of course there is a way to add google maps to a forum, and since version 1.1, an easy one. Just add those two lines after `mapbbcode-config.js` but before `new MapBBCode()`:
 
 ```html
-<script src="mapbbcode/Google.js"></script>
 <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
-<script>window.layerList.list['Google Maps'] = 'new L.Google("ROADMAP")';</script>
+<script src="{mapbbcode}/proprietary/Google.js"></script>
 ```
+
+The same for other proprietary layers: Bing, Yandex etc.
 
 **I haven't found my question in this list**
 
