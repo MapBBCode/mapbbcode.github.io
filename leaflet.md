@@ -17,11 +17,7 @@ A round icon with a white border and text inside. Can be used to display markers
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
 <div id="mapli"></div>
-<script type="text/javascript">
-var mapli = L.map('mapli').setView([11, 22], 2);
-mapli.addLayer(window.layerList.getLeafletLayers('OpenStreetMap')[0]);
-mapli.addLayer(L.marker([11, 22], { icon: L.letterIcon('A') }));
-</script>
+<script src="/plugins-demo.js" type="text/javascript"></script>
 
 ## L.PopupIcon
 
@@ -30,6 +26,9 @@ An icon that looks like a popup panel, but significantly smaller. Title should b
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
 <div id="mappi"></div>
 <script type="text/javascript">
+var mappi = L.map(\'mappi\').setView([11, 22], 2);
+mappi.addLayer(window.layerList.getLeafletLayers(\'OpenStreetMap\')[0]);
+mappi.addLayer(L.marker([11, 22], { icon: L.popupIcon(\"No, you don't have to click me\") }));
 </script>
 
 ## L.FunctionButtons
