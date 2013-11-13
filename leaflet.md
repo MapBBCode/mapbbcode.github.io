@@ -3,6 +3,7 @@ layout: default
 title: Leaflet Plugins
 needmap: true
 ---
+{% include plugins-demo.html %}
 
 During the development of MapBBCode a lot of Leaflet plugins were written. Here is a documentation on all of them, along with examples and download links. Source files reside along MapBBCode in its [GitHub repository](https://github.com/MapBBCode/mapbbcode).
 
@@ -17,7 +18,6 @@ A round icon with a white border and text inside. Can be used to display markers
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
 <div id="mapli"></div>
-<script src="/plugins-demo.js" type="text/javascript"></script>
 
 ## L.PopupIcon
 
@@ -25,11 +25,6 @@ An icon that looks like a popup panel, but significantly smaller. Title should b
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
 <div id="mappi"></div>
-<script type="text/javascript">
-var mappi = L.map(\'mappi\').setView([11, 22], 2);
-mappi.addLayer(window.layerList.getLeafletLayers(\'OpenStreetMap\')[0]);
-mappi.addLayer(L.marker([11, 22], { icon: L.popupIcon(\"No, you don't have to click me\") }));
-</script>
 
 ## L.FunctionButtons
 
@@ -43,8 +38,6 @@ When clicked, the control emits a Leaflet event `clicked` with a single data pro
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
 <div id="mapfb"></div>
-<script type="text/javascript">
-</script>
 
 ### L.FunctionButton
 
@@ -88,8 +81,6 @@ When active, the layer switcher emits following Leaflet events:
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js)
 <div id="mapls"></div>
-<script type="text/javascript">
-</script>
 
 ## window.layerList
 
@@ -106,6 +97,9 @@ The object has some methods to simplify working with the layer list:
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js)
 
+<select size="1" id="llselect"><input type="button" id="lladd">
+<div id="mapll"></div>
+
 ## L.Control.Search
 
 Every search control on the Leaflet plugins page has flaws. This is an attempt on making a simple, good-looking (though not as good as MapBox's closed-source one) search control. You just click a button, type a string and press Enter key. There are only two configurable options:
@@ -115,8 +109,6 @@ Every search control on the Leaflet plugins page has flaws. This is an attempt o
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/Leaflet.Search.js)
 <div id="mapcs"></div>
-<script type="text/javascript">
-</script>
 
 ## L.ExportControl
 
@@ -133,8 +125,6 @@ An export button for maps downloaded from an external service. Gets the supporte
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/ExportButton.js)
 <div id="mapec"></div>
-<script type="text/javascript">
-</script>
 
 ## L.Control.PermalinkAttribution
 
@@ -144,5 +134,3 @@ An option `attributionEditLink` is added to `L.Map` class. If it is set to `true
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PermalinkAttribution.js)
 <div id="mappa"></div>
-<script type="text/javascript">
-</script>

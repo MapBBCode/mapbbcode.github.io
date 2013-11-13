@@ -1,0 +1,25 @@
+<script src="https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js"></script>
+<script src="https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js"></script>
+<script>
+// L.LeafletIcon
+var mapli = L.map('mapli').setView([11, 22], 2);
+mapli.addLayer(window.layerList.getLeafletLayers('OpenStreetMap')[0]);
+mapli.addLayer(L.marker([11, 22], { icon: L.letterIcon('A') }));
+
+// L.PopupIcon
+var mappi = L.map('mappi').setView([11, 22], 2);
+mappi.addLayer(window.layerList.getLeafletLayers('OpenStreetMap')[0]);
+mappi.addLayer(L.marker([11, 22], { icon: L.popupIcon("No, you don't have to click me") }));
+
+// L.FunctionButtons
+
+// L.StaticLayerSwitcher
+
+// window.layerList
+
+// L.Control.Search
+
+// L.ExportControl
+
+// L.Control.PermalinkAttribution
+</script>
