@@ -18,9 +18,9 @@ A round icon with a white border and text inside. Can be used to display markers
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
 <div id="mapli"></div>
 <script>
-var mapli = L.map('mapli').setView([11, 22], 2);
-mapli.addLayer(window.layerList.getLeafletLayers('OpenStreetMap')[0]);
-mapli.addLayer(L.marker([11, 22], { icon: L.letterIcon('A') }));
+var mapli = L.map("mapli").setView([11, 22], 2);
+mapli.addLayer(window.layerList.getLeafletLayers("OpenStreetMap")[0]);
+mapli.addLayer(L.marker([11, 22], { icon: L.letterIcon("A") }));
 </script>
 
 ## L.PopupIcon
