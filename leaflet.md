@@ -4,7 +4,7 @@ title: Leaflet Plugins
 needmap: true
 ---
 
-During the development of MapBBCode a lot of Leaflet plugins were written (not counting github issues and pull-requests). Here is a documentation on all of them, along with examples and download links. Source files reside along MapBBCode in its [GitHub repository)(https://github.com/MapBBCode/mapbbcode).
+During the development of MapBBCode a lot of Leaflet plugins were written. Here is a documentation on all of them, along with examples and download links. Source files reside along MapBBCode in its [GitHub repository](https://github.com/MapBBCode/mapbbcode).
 
 ## L.LetterIcon
 
@@ -27,6 +27,11 @@ mapli.addLayer(L.marker([11, 22], { icon: L.letterIcon('A') }));
 
 An icon that looks like a popup panel, but significantly smaller. Title should be passed to the constructor. Has only one option: `width` for maximum icon width.
 
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
+<div id="mappi"></div>
+<script type="text/javascript">
+</script>
+
 ## L.FunctionButtons
 
 This control simplifies creating simple Leaflet controls that invoke javascript functions when clicked. It supports multiple actions on one control: in that case they are stacked vertically, like on a standard zoom control.
@@ -36,6 +41,11 @@ Class contructor accepts two parameters: an array of labels for actions (strings
 An action inside a function button can be updated with `setContent(id, content)` and `setTitle(id, title)` methods. Image content offset can be altered with `setBgPos(id, bgPos)` method.
 
 When clicked, the control emits a Leaflet event `clicked` with a single data property, `idx`: zero-based index of an action that was selected.
+
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
+<div id="mapfb"></div>
+<script type="text/javascript">
+</script>
 
 ### L.FunctionButton
 
@@ -77,6 +87,11 @@ When active, the layer switcher emits following Leaflet events:
 | `selectionchanged` | `{ <ILayer> selected, <String> selectedId }` | A user has changed active layer.
 | `layerschanged` | `{ <String[]> layerIds }` | List of layers has been changed (only when it is editable).
 
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js)
+<div id="mapls"></div>
+<script type="text/javascript">
+</script>
+
 ## window.layerList
 
 This object (not a class!) holds a list of layers that can be used on a leaflet map, and more specifically, as a MapBBCode base layer. It is by no means complete and includes only the most popular and distinctive layers.
@@ -90,12 +105,19 @@ The object has some methods to simplify working with the layer list:
 * `<String>   getKeyLink( <String> id )`: returns an URL for a developer key required for a layer, or an empty string if there is no URL or the layer does not need a key.
 * `<ILayer[]> getLeafletLayers( <String[]> ids, <Leaflet> L )`: converts an array of ids to array of layers ready to be added to a Leaflet map.
 
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js)
+
 ## L.Control.Search
 
 Every search control on the Leaflet plugins page has flaws. This is an attempt on making a simple, good-looking (though not as good as MapBox's closed-source one) search control. You just click a button, type a string and press Enter key. There are only two configurable options:
 
 * `title`: title text on the control.
 * `email`: e-mail address that will be sent to Nominatim server. It can be used for determining a source of suspicious activity. You should use this option, especially if the control is installed on a popular website.
+
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/Leaflet.Search.js)
+<div id="mapcs"></div>
+<script type="text/javascript">
+</script>
 
 ## L.ExportControl
 
@@ -110,8 +132,18 @@ An export button for maps downloaded from an external service. Gets the supporte
 | `types` | String[] | `[]` | List of supported formats (if empty, then it is downloaded).
 | `titles` | String[] | `[]` | Titles for supported formats (if empty, then it is downloaded).
 
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/ExportButton.js)
+<div id="mapec"></div>
+<script type="text/javascript">
+</script>
+
 ## L.Control.PermalinkAttribution
 
 Replaces `L.Control.Attribution` with itself, so you won't have to do anything besides including the plugin script. Makes OpenStreetMap links in attribution into permanent links to the displayed place on osm.org website.
 
 An option `attributionEditLink` is added to `L.Map` class. If it is set to `true`, OSM links will be followed by an edit link.
+
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PermalinkAttribution.js)
+<div id="mappa"></div>
+<script type="text/javascript">
+</script>
