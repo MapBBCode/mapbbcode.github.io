@@ -3,7 +3,7 @@ layout: default
 title: API Reference
 ---
 
-`MapBBCode.js` methods are explained on the [BBCode page](bbcode.html). In `MapBBCodeUI.js` and `MapBBCodeUI.Editor.js` there are only 4 public methods combined. Note that when built separately, UI scripts require `MapBBCode.js`, `EditorSprites.js` (base64 contents of a PNG image with button icons) and `FunctionButton.js` (see below). They also support all other modules described in the [Leaflet plugins page](plugins.html), but can work without them.
+`MapBBCode.js` methods are explained on the [BBCode page](bbcode.html). In `MapBBCodeUI.js` and `MapBBCodeUI.Editor.js` there are only 4 public methods combined. Note that when built separately, UI scripts require `MapBBCode.js`, `EditorSprites.js` (base64 contents of a PNG image with button icons) and `FunctionButton.js` (see below). They also support all other modules described in the [Leaflet plugins page](leaflet.html), but can work without them.
 
 ## Methods
 
@@ -70,7 +70,7 @@ Other options:
 
 ## Parameter Processors
 
-Since the [BBCode specification](BBCODE.md) states that the only customizable part of [map] bbcode is object parameter set, parameter processing and editing panels in the editor have been made pluggable. There are two mandatory modules (text and color) and several example modules.
+Since the [BBCode specification](bbcode.html) states that the only customizable part of [map] bbcode is object parameter set, parameter processing and editing panels in the editor have been made pluggable. There are two mandatory modules (text and color) and several example modules.
 
 To create a new parameter module, you have to push to `window.MapBBCode.objectParams` array an object with the following properties and methods (only the first four are mandatory):
 
@@ -85,7 +85,7 @@ To create a new parameter module, you have to push to `window.MapBBCode.objectPa
 # Configuration Tool
 
 To simplify configuring map panel dimensions and a list of available layers, there is a separate javascript module that can be easily integrated in an administration panel.
-It requires `window.layerList` and `L.StaticLayerSwitcher` for easier editing of layers. See [EMBEDDING.md](EMBEDDING.md#administration-panel) for a guide on integration.
+It requires `window.layerList` and `L.StaticLayerSwitcher` for easier editing of layers. Also see [a guide on integration](embedding.html).
 
 ## Options
 
