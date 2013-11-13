@@ -16,14 +16,16 @@ A round icon with a white border and text inside. Can be used to display markers
 | `radius` | Number | `11` | Icon radius.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
-<div id="mapli"></div>
+
+<div class="map" id="mapli"></div>
 
 ## L.PopupIcon
 
 An icon that looks like a popup panel, but significantly smaller. Title should be passed to the constructor. Has only one option: `width` for maximum icon width.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
-<div id="mappi"></div>
+
+<div class="map" id="mappi"></div>
 
 ## L.FunctionButtons
 
@@ -36,7 +38,8 @@ An action inside a function button can be updated with `setContent(id, content)`
 When clicked, the control emits a Leaflet event `clicked` with a single data property, `idx`: zero-based index of an action that was selected.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
-<div id="mapfb"></div>
+
+<div class="map" id="mapfb"></div>
 
 ### L.FunctionButton
 
@@ -79,7 +82,8 @@ When active, the layer switcher emits following Leaflet events:
 | `layerschanged` | `{ <String[]> layerIds }` | List of layers has been changed (only when it is editable).
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js)
-<div id="mapls"></div>
+
+<div class="map" id="mapls"></div>
 
 ## window.layerList
 
@@ -97,7 +101,7 @@ The object has some methods to simplify working with the layer list:
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js)
 
 <select size="1" id="llselect"><input type="button" id="lladd">
-<div id="mapll"></div>
+<div class="map" id="mapll"></div>
 
 ## L.Control.Search
 
@@ -107,7 +111,8 @@ Every search control on the Leaflet plugins page has flaws. This is an attempt o
 * `email`: e-mail address that will be sent to Nominatim server. It can be used for determining a source of suspicious activity. You should use this option, especially if the control is installed on a popular website.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/Leaflet.Search.js)
-<div id="mapcs"></div>
+
+<div class="map" id="mapcs"></div>
 
 ## L.ExportControl
 
@@ -123,7 +128,8 @@ An export button for maps downloaded from an external service. Gets the supporte
 | `titles` | String[] | `[]` | Titles for supported formats (if empty, then it is downloaded).
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/ExportButton.js)
-<div id="mapec"></div>
+
+<div class="map" id="mapec"></div>
 
 ## L.Control.PermalinkAttribution
 
@@ -132,6 +138,7 @@ Replaces `L.Control.Attribution` with itself, so you won't have to do anything b
 An option `attributionEditLink` is added to `L.Map` class. If it is set to `true`, OSM links will be followed by an edit link.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PermalinkAttribution.js)
-<div id="mappa"></div>
+
+<div class="map" id="mappa"></div>
 
 {% include plugins-demo.html %}

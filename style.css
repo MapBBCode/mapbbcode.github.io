@@ -48,6 +48,10 @@ h2 {
 	text-align: center;
 }
 
+.map {
+	height: 250px;
+}
+
 /* markdown stuff */
 
 code, pre {
