@@ -10,6 +10,7 @@ On this website (please help us [translating](https://github.com/MapBBCode/mapbb
 * [Administrator's Guide](admin.html)
 * [BBCode Specification](bbcode.html)
 * [API Reference](api.html)
+* [Leaflet Plugins](leaflet.html)
 * [Frequently Asked Questions](faq.html)
 * [Embedding MapBBCode](embedding.html)
 * [MapBBCode in Forums](forums.html)
