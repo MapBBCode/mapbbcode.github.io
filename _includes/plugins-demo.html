@@ -1,6 +1,6 @@
-<script src="https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js"></script>
-<script src="https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js"></script>
+<script src="/lib/mapbbcode-config.js"></script>
 <script>
+window.onload = function() {
 // L.LeafletIcon
 var mapli = L.map('mapli').setView([11, 22], 2);
 mapli.addLayer(window.layerList.getLeafletLayers('OpenStreetMap')[0]);
@@ -22,4 +22,5 @@ mappi.addLayer(L.marker([11, 22], { icon: L.popupIcon("No, you don't have to cli
 // L.ExportControl
 
 // L.Control.PermalinkAttribution
+}
 </script>
