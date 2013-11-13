@@ -3,7 +3,6 @@ layout: default
 title: Leaflet Plugins
 needmap: true
 ---
-{% include plugins-demo.html %}
 
 During the development of MapBBCode a lot of Leaflet plugins were written. Here is a documentation on all of them, along with examples and download links. Source files reside along MapBBCode in its [GitHub repository](https://github.com/MapBBCode/mapbbcode).
 
@@ -134,3 +133,5 @@ An option `attributionEditLink` is added to `L.Map` class. If it is set to `true
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PermalinkAttribution.js)
 <div id="mappa"></div>
+
+{% include plugins-demo.html %}
