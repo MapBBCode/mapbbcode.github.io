@@ -3,45 +3,45 @@ layout: default
 title: FAQ
 ---
 
-**How can an imagery layer be stored in a BBCode?**
+**Как сохранить выбранный слой в bb-коде?**
 
-You don't store presentation information (layer, dimensions, map title) in the [map] bbcode. Code is intended to represent just geometric objects with their attributes: like GeoJSON, but better suited for forums. This way it is independent from the library or the way it is presented. You can draw object differently, but if you conform to the specification, the resulting map will have everything the author intended to show.
+Код [map] не хранит презентационную информацию (слой, размеры, заголовок). Он предназначен для хранения только геометрических объектов с атрибутами: как GeoJSON, но удобнее для форумов. В этом качестве он не зависит от библиотеки или способа представления. Можно рисовать объекты где и как угодно, но при соблюдении формата итоговая карта будет содержать всё, что намеревался показать её автор.
 
-Map BBCode stores *what* to display, not *how*. The only exception are zoom/coordinate attributes of [map] tag, which could be considered an object in itself: when a code is empty, those attributes can center a map of a feature being discussed. Using those attributes along with objects is not recommended, and the library does not produce such code. Markers are better suited for drawing attention to certain parts of a map, and unpredictable panel dimensions make fiddling with initial zoom level pointless.
+BB-код карты хранит *что* показать, не *как*. Единственное исключение — параметры масштаба и координат тега [map], которые можно считать отдельным объектом: когда содержимое тега отсутствует, эти параметры позволяют сфокусировать карту на предмете обсуждения. Использование их при наличии объектов не рекомендуется, и библиотека не генерирует такой код. Для фокусирования внимания на разных частях карты лучше приспособлены маркеры, а непредсказуемые размеры панелей делают бессмысленным подбор значений масштаба.
 
-**Which map layers would you recommend for forum maps?**
+**Какие слои вы посоветуете для карт на форуме?**
 
-In that order:
+В таком порядке:
 
-* *OpenMapSurfer* — because it is the prettiest and rich map based on OSM data.
-* *OpenStreetMap* — as a fallback from OpenMapSurfer, which can be offline sometimes, and as a familiar map for some.
-* *Bing Imagery* — most people are used to having imagery layer as an option, and Bing is good enough. Also Bing team supports OSM project, which automatically makes them nice guys.
+* *OpenMapSurfer* — потому что это самый красивый и богатый слой на базе данных OpenStreetMap.
+* *OpenStreetMap* — как альтернатива OpenMapSurfer, который иногда может быть недоступен, и как привычная некоторым карта.
+* *Bing Imagery* — большинство привыкло к спутниковым слоям в списке, и Bing достаточно хорош. Также, команда Bing поддерживает проект OSM, что автоматически делает их хорошими.
 
-**Should I enable MapBBCode Share integration for my forum/blog?**
+**Стоит ли включать интеграцию с MapBBCode Share для форума или блога?**
 
-Maps uploaded to a central server (it doesn't need to be share.mapbbcode.org) allow for three nice features that your users might welcome:
+Хранение карт на центральном сервере (не обязательно share.mapbbcode.org) даёт вашим пользователям три потенциально полезных возможности:
 
-1. Collaborative editing: no hassle with post editing permissions, just give away a link to the share service. Updates will immediately be shown on the included map.
-2. Export to a multitude of formats, for example, GPX or CSV. A topic opener can share a path for the upcoming trip, and all participants will be able to download it to their GPS devices.
-3. A single map for different forums and sites: you can include the original map in a blog post or in an another forum thread.
+1. Совместное редактирование: никаких ковыряний в правах на редактирование сообщений, просто выдайте ссылку на редактирование внешней карты. Изменения автоматически появятся на встроенной карте.
+2. Выгрузка во множество форматов, включая GPX и CSV. Автор темы может выложить маршрут предстоящей поездки, и все участники потом скачают его сразу себе на GPS-навигаторы.
+3. Единая карта для разных форумов и сайтов: ссылку на внешнюю карту можно вставить и в запись в блоге, и в другую тему на форуме.
 
-The drawback is that uploaded maps cannot be edited from a library, and editing link should be bookmarked. Of course, if the author has lost the link, he can fork the map and replace the old code with the new one.
+Минусом будет невозможность редактирования внешней карты напрямую из форума, поэтому ссылку на редактирование нужно сохранять в закладки. Конечно, если автор карты потеряет эту ссылку, он сможет сделать копию карты и заменить код.
 
-**External maps are not loaded in Internet Explorer**
+**Внешние карты не загружаются в браузере Internet Explorer**
 
-Open "Internet Options", select "Security" tab, click "Custom level..." button and find "Access data sources across domains" in "Miscellaneous" section. Set it to "Enable" and refresh the page. This setting is off by default, and I do not know a way to circumvent it. Please refer to the [relevant issue](https://github.com/MapBBCode/mapbbcode/issues/8) and submit a pull request to `MapBBCodeUI.Share.js`, if you know how to solve this problem.
+Откройте «Свойства обозревателя», там вкладку «Безопасность», нажмите кнопку «Другой...» и найдите «Доступ к источникам данных за пределами домена» в разделе «Разное». Ткните во «Включить» и обновите страницу. Эта настройка по умолчанию выключена, и автор не знает способа её включить. Загляните в [соответствующий тикет](https://github.com/MapBBCode/mapbbcode/issues/8) и отправьте пул-реквест в `MapBBCode.Share.js`, если знаете, как решить эту проблему.
 
-**Why some dimensions are grayed out in a configuration panel?**
+**Почему некоторые числа выводятся серым цветом в панели конфигурации?**
 
-The button below "View/Edit" switcher control how the map will appear on forum/blog pages. Its settings make some values irrelevant. For example, when the editor is configured to be shown as an inline panel, editor window dimensions are not used, which is visualized with grayed-out values.
+Кнопка под переключателем «Просмотр/Редактор» определяют, как карта встраивается на страницы форума или блога. Её значения обессмысливают некоторые размеры. Например, когда редактор отображается во встроенной панели, размеры окна редактора не используются, поэтому они выводятся бледнее других.
 
-**Why forum modules need `mapbbcode` directory?**
+**Зачем нужен каталог `mapbbcode` в комплекте с плагином?**
 
-It contains not only three files of the MapBBCode library, but also other libraries that may be useful, like a Bing imagery layer. Only one of those is available from CDN, Leaflet. Ideally the whole folder should be stored at a single location (of course, with an option to download all files, e.g. for an intranet forum), but there is a problem. I don't know where to get free and *reliable* CDN. If you know how to do it properly, please contact the author.
+Он содержит не только три файла библиотеки MapBBCode, но и другие библиотеки, как обязательные, так и потенциально полезные, вроде слоя космоснимков Bing. Только одна из библиотек хранится в CDN: Leaflet. В идеале весь каталог мог бы храниться в едином месте (но с возможностью всё скачать — например, для форума в интранете), но есть проблема. Я не знаю, где взять бесплатный и *надёжный* CDN. Если вы занимались таким вопросом, свяжитесь с автором.
 
-**The whole library is essentially one file, right?**
+**Вся библиотека — это, по сути, один файл?**
 
-Yes. For example, using only `mapbbcode.js` you can visualize a bbcode or include a map from MapBBCode Share:
+Да. Например, используя только `mapbbcode.js`, можно добавить на страницу карту из bb-кода или с сервера MapBBCode Share:
 
 ```html
 <!DOCTYPE html>
@@ -56,36 +56,41 @@ mapBB.showExternal('test', 'gttvz');
 </script>
 ```
 
-**I want to display length while drawing lines**
+**Хочу отображение длины линий**
 
-Include the `Param.Measure.js` script from the MapBBCode repository, and the measurement line will automatically appear in a feature popup panel. This and other example scripts in `param` directory demonstrate how to add functionality to the editor.
+Включите скрипт `Param.Measure.js` из репозитория MapBBCode, и строка с длиной или площадью автоматически появится во всплывающей панели объекта. Этот и другие скрипты каталога `param` демонстрируют добавление функциональности в редактор.
 
-**Why one cannot add title text to lines and polygons?**
+**Почему нельзя добавлять подписи к линиям и полигонам?**
 
-Because it is not obvious visually whether you can click on an object or not, unlike markers, which are made for being clicked. You can override this, of course, by modifying `Param.Text.js` and making a custom build.
+Потому что визуально не очевидно, можно ли кликать на объект. В отличие от маркеров, для которых ожидаешь подписи. Разумеется, при желании это можно переопределить, изменив скрипт `Param.Text.js` и собрав свою версию библиотеки.
 
-**Layer order in a layer control differs from the order in `layers` property**
+**Какой слой показывается по умолчанию?**
 
-This is a [Leaflet library issue](https://github.com/Leaflet/Leaflet/issues/2086).
+Первый. Самый верхний в интерфейсе конфигурации. А не тот, что был выбран на момент нажатия кнопки «сохранить настройки».
 
-**I want a custom layer included in a layer list that forum admins use**
+**Порядок слоёв в панелях отличается от того, что указан в свойстве `layers`**
 
-Add this line to scripts in page templates before MapBBCode objects instantiation:
+Это [ошибка в библиотеке Leaflet](https://github.com/Leaflet/Leaflet/issues/2086).
+
+**Хочу видеть в списке слоёв страницы конфигурации нестандартный слой**
+
+Добавьте подобную строку в скрипты шаблонов страниц, после подключения `mapbbcode-config.js`:
 
 ```javascript
 window.layerList.list['Layer Name'] = 'L.tileLayer("http://...", { ... })';
 ```
 
-**Specifically, I want Google Maps in my forum**
+**Конкретнее, хочу Google Maps в форуме**
 
-Google layers are not included because Google is evil. And sometimes charge for their maps. And you should promote free and open maps, that is, OSM. But of course there is a way to add google maps to a forum. Download Pavel's [Google.js](https://raw.github.com/shramov/leaflet-plugins/master/layer/tile/Google.js) and put it in the mapbbcode directory. Then add those lines after `mapbbcode-config.js` but before `new MapBBCode()`:
+Слои Google Maps не включены по умолчанию, потому что Google — это зло. И иногда требуют денег за использование карт. И вам следует продвигать бесплатные и свободные карты, то есть, OpenStreetMap. Но, конечно, способ подключить слои Google существует, и с версии 1.1 очень прост. Добавьте эти две строки в шаблоны страниц сразу после подключения `mapbbcode-config.js` (внимание на путь к файлу):
 
 ```html
-<script src="mapbbcode/Google.js"></script>
 <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
-<script>window.layerList.list['Google Maps'] = 'new L.Google("ROADMAP")';</script>
+<script src="{mapbbcode}/proprietary/Google.js"></script>
 ```
 
-**I haven't found my question in this list**
+То же и для остальных проприетарных слоёв: Bing, Яндекс и т.п.
 
-Please ask it on the [issue tracker](https://github.com/mapbbcode/mapbbcode/issues), or [write to the author](mailto:zverik@textual.ru).
+**Мой вопрос необычен, что делать?**
+
+Задайте его [на гитхабе](https://github.com/mapbbcode/mapbbcode/issues) или [автору почтой](mailto:zverik@textual.ru).
