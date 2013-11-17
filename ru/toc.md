@@ -9,9 +9,9 @@ toc: true
 * [Руководство пользователя](guide.html)
 * [Руководство администратора](admin.html)
 * [Спецификация bb-кода](bbcode.html)
-* [Справочник по API](../api.html) (англ.)
-* [Плагины для Leaflet](leaflet.html)
 * [Часто задаваемые вопросы](faq.html)
+* [Справочник по API](../api.html) (англ.)
+* [Плагины для Leaflet](../leaflet.html) (англ.)
 * [Как внедрить MapBBCode](../embedding.html) (англ.)
 * [MapBBCode на форумах](forums.html)
 

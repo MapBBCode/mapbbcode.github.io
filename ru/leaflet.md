@@ -8,14 +8,14 @@ needmap: true
 
 ## L.LetterIcon
 
-A round icon with a white border and text inside. Can be used to display markers that don't require clicking or hovering over to see their labels.
+Круглая иконка с белой рамкой и текстом внутри. Полезно для отображения маркеров, которые не требуют клика или наведения курсора для того, чтобы прочитать их текст.
 
-| Option | Type | Default | Description
+| Опция | Тип | По умолчанию | Описание
 |---|---|---|---
-| `color` | String | `'black'` | CSS color of icon background.
-| `radius` | Number | `11` | Icon radius.
+| `color` | String | `'black'` | Цвет CSS фона иконки.
+| `radius` | Number | `11` | Радиус иконки.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
 
 ```javascript
 L.marker([11, 22], { icon: L.letterIcon('Big', { radius: 20 }), clickable: false }).addTo(map);
@@ -25,9 +25,9 @@ L.marker([11, 22], { icon: L.letterIcon('Big', { radius: 20 }), clickable: false
 
 ## L.PopupIcon
 
-An icon that looks like a popup panel, but significantly smaller. Title should be passed to the constructor. Has only one option: `width` for maximum icon width.
+Иконка, которая выглядит как всплывающая панель, но значительно меньше её. Надпись нужно указывать в конструкторе объекта. Опция только одна: `width` с максимальной шириной иконки.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
 
 ```javascript
 L.marker([11, 22], { icon: L.popupIcon("Don't click me"), clickable: false }).addTo(map);
@@ -45,7 +45,7 @@ An action inside a function button can be updated with `setContent(id, content)`
 
 When clicked, the control emits a Leaflet event `clicked` with a single data property, `idx`: zero-based index of an action that was selected.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
 
 ```javascript
 var btn = L.functionButtons(['Saint-Petersburg', 'Hide buttons']);
@@ -76,7 +76,7 @@ Each layer has to have a label (id). It is either specified on adding, or includ
 
 The constructor accepts two parameters. The first one is a layer list, either an array of ids or an object `{ id: layer, ... }`. If a layer is not specified, it is requested from `window.layerList` for a given id. The second optional parameter is an options object with the following properties:
 
-| Option | Type | Default | Description
+| Опция | Тип | По умолчанию | Описание
 |---|---|---|---
 | `maxLayers` | Number | `7` | Maximum number of layers on a map.
 | `bgColor` | String | `'white'` | Background CSS color of a layer switcher.
@@ -101,7 +101,7 @@ When active, the layer switcher emits following Leaflet events:
 | `selectionchanged` | `{ <ILayer> selected, <String> selectedId }` | A user has changed active layer.
 | `layerschanged` | `{ <String[]> layerIds }` | List of layers has been changed (only when it is editable).
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js)
 
 ``` javascript
 map.addControl(L.staticLayerSwitcher([
@@ -124,7 +124,7 @@ The object has some methods to simplify working with the layer list:
 * `<String>   getKeyLink( <String> id )`: returns an URL for a developer key required for a layer, or an empty string if there is no URL or the layer does not need a key.
 * `<ILayer[]> getLeafletLayers( <String[]> ids, <Leaflet> L )`: converts an array of ids to array of layers ready to be added to a Leaflet map.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js)
 
 ``` javascript
 map.addLayer(window.layerList.getLeafletLayer('OpenStreetMap'));
@@ -140,7 +140,7 @@ Every search control on the Leaflet plugins page has flaws. This is an attempt o
 * `title`: title text on the control.
 * `email`: e-mail address that will be sent to Nominatim server. It can be used for determining a source of suspicious activity. You should use this option, especially if the control is installed on a popular website.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/Leaflet.Search.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/Leaflet.Search.js)
 
 ``` javascript
 map.addControl(L.control.search());
@@ -152,7 +152,7 @@ map.addControl(L.control.search());
 
 An export button for maps downloaded from an external service. Gets the supported formats list from the server.
 
-| Option | Type | Default | Description
+| Опция | Тип | По умолчанию | Описание
 |---|---|---|---
 | `name` | String | 'Export' | Text written on a button.
 | `title` | String | `''` | Title text for the button.
@@ -161,7 +161,7 @@ An export button for maps downloaded from an external service. Gets the supporte
 | `types` | String[] | `[]` | List of supported formats (if empty, then it is downloaded).
 | `titles` | String[] | `[]` | Titles for supported formats (if empty, then it is downloaded).
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/ExportButton.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/ExportButton.js)
 
 ``` javascript
 map.addControl(L.exportControl({ codeid: 'nwrxs' }));
@@ -175,7 +175,7 @@ Replaces `L.Control.Attribution` with itself, so you won't have to do anything b
 
 An option `attributionEditLink` is added to `L.Map` class. If it is set to `true`, OSM links will be followed by an edit link.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PermalinkAttribution.js)
+[Скачать](https://raw.github.com/MapBBCode/mapbbcode/master/src/PermalinkAttribution.js)
 
 <div class="map" id="mappa"></div>
 
