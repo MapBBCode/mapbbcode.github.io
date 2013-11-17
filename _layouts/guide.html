@@ -4,20 +4,16 @@
 <title>{% if page.title %}{{ page.title }} — {% endif %}MapBBCode</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="/style.css">
-{% if page.needmap %}
 <link rel="stylesheet" href="/lib/leaflet.css" />
+<link rel="stylesheet" href="/lib/leaflet.draw.css" />
 <!--[if lte IE 8]>
     <link rel="stylesheet" href="/lib/leaflet.ie.css" />
+    <link rel="stylesheet" href="/lib/leaflet.draw.ie.css" />
 <![endif]-->
 <script src="/lib/leaflet.js"></script>
+<script src="/lib/leaflet.draw.js"></script>
 <script src="/lib/mapbbcode.js"></script>
-<script>
-var mapBB = new MapBBCode({
-    fullViewHeight: 300,
-    fullFromStart: true
-});
-</script>
-{% endif %}
+<script src="/lib/mapbbcode-config.js"></script>
 </head>
 <body>
 {% include langbar.html %}

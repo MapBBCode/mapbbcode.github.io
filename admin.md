@@ -1,6 +1,49 @@
 ---
-layout: default
+layout: guide
 title: Administrator's Guide
 ---
 
 todo
+
+<div>
+<select size="1" id="layers"></select> <input type="button" id="layeradd"/>
+</div>
+<div id="bingkey">
+<span id="bingtitle"></span>
+<input type="text" size="60" id="keyvalue"/>
+</div>
+<div id="map"></div>
+
+<div>
+<div>Default position and zoom: <span id="zoompos"></span></div>
+<div>View panel size: <span id="viewsize"></span></div>
+<div>Editor panel height: <span id="editheight"></span></div>
+<div>Editor window size: <span id="winsize"></span></div>
+</div>
+
+<script>
+var config = new MapBBCodeConfig({
+	layers: ['OpenMapSurfer', 'OpenStreetMap'],
+	viewWidth: 500,
+	fullViewHeight: 400
+});
+config.bindLayerAdder({
+	select: 'layers',
+	button: 'layeradd',
+	keyBlock: 'bingkey',
+	keyTitle: 'bingtitle',
+	keyValue: 'keyvalue',
+	keyBlockDisplay: 'block'
+});
+config.on('show change', function(o) {
+	function set(span, value, enabled) {
+		document.getElementById(span).innerHTML = value;
+		document.getElementById(span).style.color = enabled ? 'black' : '#aaa';
+	}
+	set('zoompos', o.defaultZoom + ',' + o.defaultPosition[0] + ',' + o.defaultPosition[1], true);
+	set('viewsize', o.fullFromStart ? '100% × ' + o.fullViewHeight : o.viewWidth + '×' + o.viewHeight, true);
+	set('editheight', o.editorHeight, !o.editorInWindow);
+	set('winsize', o.windowWidth + '×' + o.windowHeight, o.editorInWindow);
+});
+config.show('map');
+</script>
