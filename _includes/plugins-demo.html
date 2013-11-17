@@ -1,24 +1,70 @@
 <script src="/lib/mapbbcode-config.js"></script>
 <script>
+function createMap(div, coords) {
+	var map = L.map(div, { scrollWheelZoom: false }).setView(coords || [11, 22], coords ? 13 : 2);
+	map.addLayer(window.layerList.getLeafletLayer('OpenStreetMap'));
+	return map;
+}
+var spbPos = L.latLng(59.939, 30.315);
+
 // L.LeafletIcon
-var mapli = L.map('mapli').setView([11, 22], 2);
-mapli.addLayer(window.layerList.getLeafletLayers('OpenStreetMap')[0]);
-mapli.addLayer(L.marker([11, 22], { icon: L.letterIcon('A') }));
+var mapli = createMap('mapli');
+mapli.addLayer(L.marker([11, 2], { icon: L.letterIcon('A'), clickable: false }));
+mapli.addLayer(L.marker([11, 22], { icon: L.letterIcon('Big', { radius: 20 }), clickable: false }));
+mapli.addLayer(L.marker([11, 42], { icon: L.letterIcon('42', { color: 'red' }) }).bindPopup('Yes, it is just an icon, and you can customise markers however you like, for example, add popups.<br>(no joke on meaning of life for you)'));
 
 // L.PopupIcon
-var mappi = L.map('mappi').setView([11, 22], 2);
-mappi.addLayer(window.layerList.getLeafletLayers('OpenStreetMap')[0]);
-mappi.addLayer(L.marker([11, 22], { icon: L.popupIcon("No, you don't have to click me") }));
+var mappi = createMap('mappi');
+mappi.addLayer(L.marker([11, 22], { clickable: false, icon: L.popupIcon("No, you don't have to click me") }));
+mappi.addLayer(L.marker([-20, 100], { icon: L.popupIcon("(but I'm ok with that)") }).bindPopup('Popup on a popup. Oh, the irony.'));
 
 // L.FunctionButtons
+var mapfb = createMap('mapfb');
+var fb = L.functionButtons(['Saint-Petersburg', 'Hide buttons'], { position: 'topleft' });
+var fbspb = false;
+fb.on('clicked', function(data) {
+	if( data.idx == 0 ) {
+		fbspb = !fbspb;
+		mapfb.setView(fbspb ? spbPos : [11, 22], fbspb ? 13 : 2);
+		fb.setContent(0, fbspb ? 'Whole world' : 'Saint-Petersburg');
+	} else {
+		mapfb.removeControl(fb);
+	}
+});
+mapfb.addControl(fb);
 
 // L.StaticLayerSwitcher
+var mapls = L.map('mapls', { scrollWheelZoom: false }).setView(spbPos, 13);
+mapls.addControl(L.staticLayerSwitcher(['OpenMapSurfer', 'CycleMap', 'Humanitarian'], { editable: true }));
 
 // window.layerList
+var mapll = createMap('mapll', spbPos);
+var sel = document.getElementById('llselect');
+var layerKeys = window.layerList.getSortedKeys();
+for( var i = 0; i < layerKeys.length; i++ ) {
+	if( !window.layerList.requiresKey(layerKeys[i]) ) {
+		var opt = document.createElement('option');
+		opt.innerHTML = opt.value = layerKeys[i];
+		sel.appendChild(opt);
+	}
+}
+L.DomEvent.on(document.getElementById('lladd'), 'click', function() {
+	mapll.eachLayer(function(layer) { mapll.removeLayer(layer); });
+	mapll.addLayer(window.layerList.getLeafletLayer(sel.value));
+});
 
 // L.Control.Search
+var mapcs = createMap('mapcs');
+mapcs.addControl(L.control.search());
 
 // L.ExportControl
+var mapec = createMap('mapec');
+mapec.addControl(L.exportControl({ codeid: 'nwrxs' }));
+L.popup({ closeButton: false, closeOnClick: false }).setLatLng([0, 22]).setContent('Instead of this popup, what will be exported is <a href="http://share.mapbbcode.org/nwrxs" target="sharemap">this map</a>.').openOn(mapec);
 
 // L.Control.PermalinkAttribution
+var mappa = L.map('mappa', { scrollWheelZoom: false }).setView(spbPos, 13);
+L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', { attribution: 'Map &copy; <a href=\"http://openstreetmap.org\">OSM</a> | Tiles &copy; <a href=\"http://www.opencyclemap.org/?lat={lat}&lon={lon}&zoom={zoom}\">Andy Allan</a>', minZoom: 0, maxZoom: 18 }).addTo(mappa);
+L.polyline([[59.9412, 30.3207], [59.9304, 30.3556]]).addTo(mappa);
+L.polyline([[59.9319, 30.3420], [59.9304, 30.3556], [59.9359, 30.3465]]).addTo(mappa);
 </script>

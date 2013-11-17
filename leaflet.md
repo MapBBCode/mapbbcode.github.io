@@ -17,6 +17,10 @@ A round icon with a white border and text inside. Can be used to display markers
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
 
+```javascript
+L.marker([11, 22], { icon: L.letterIcon('Big', { radius: 20 }), clickable: false }).addTo(map);
+```
+
 <div class="map" id="mapli"></div>
 
 ## L.PopupIcon
@@ -24,6 +28,10 @@ A round icon with a white border and text inside. Can be used to display markers
 An icon that looks like a popup panel, but significantly smaller. Title should be passed to the constructor. Has only one option: `width` for maximum icon width.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
+
+```javascript
+L.marker([11, 22], { icon: L.popupIcon("Don't click me"), clickable: false }).addTo(map);
+```
 
 <div class="map" id="mappi"></div>
 
@@ -38,6 +46,18 @@ An action inside a function button can be updated with `setContent(id, content)`
 When clicked, the control emits a Leaflet event `clicked` with a single data property, `idx`: zero-based index of an action that was selected.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
+
+```javascript
+var btn = L.functionButtons(['Saint-Petersburg', 'Hide buttons']);
+btn.on('clicked', function(data) {
+	if( data.idx == 0 ) {
+		map.setView([59.939, 30.315], 13);
+	} else {
+		map.removeControl(btn);
+	}
+});
+map.addControl(btn);
+```
 
 <div class="map" id="mapfb"></div>
 
@@ -83,6 +103,12 @@ When active, the layer switcher emits following Leaflet events:
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js)
 
+``` javascript
+map.addControl(L.staticLayerSwitcher([
+    'OpenMapSurfer', 'CycleMap', 'Humanitarian'
+], { editable: true }));
+```
+
 <div class="map" id="mapls"></div>
 
 ## window.layerList
@@ -100,7 +126,11 @@ The object has some methods to simplify working with the layer list:
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js)
 
-<select size="1" id="llselect"><input type="button" id="lladd">
+``` javascript
+map.addLayer(window.layerList.getLeafletLayer('OpenStreetMap'));
+```
+
+<select size="1" id="llselect"><input type="button" id="lladd" value="Show layer">
 <div class="map" id="mapll"></div>
 
 ## L.Control.Search
@@ -111,6 +141,10 @@ Every search control on the Leaflet plugins page has flaws. This is an attempt o
 * `email`: e-mail address that will be sent to Nominatim server. It can be used for determining a source of suspicious activity. You should use this option, especially if the control is installed on a popular website.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/Leaflet.Search.js)
+
+``` javascript
+map.addControl(L.control.search());
+```
 
 <div class="map" id="mapcs"></div>
 
@@ -128,6 +162,10 @@ An export button for maps downloaded from an external service. Gets the supporte
 | `titles` | String[] | `[]` | Titles for supported formats (if empty, then it is downloaded).
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/ExportButton.js)
+
+``` javascript
+map.addControl(L.exportControl({ codeid: 'nwrxs' }));
+```
 
 <div class="map" id="mapec"></div>
 
