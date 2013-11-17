@@ -135,7 +135,7 @@ map.addLayer(window.layerList.getLeafletLayer('OpenStreetMap'));
 
 ## L.Control.Search
 
-Every search control on the Leaflet plugins page has flaws. This is an attempt on making a simple, good-looking (though not as good as MapBox's closed-source one) search control. You just click a button, type a string and press Enter key. There are only two configurable options:
+Every search control on the Leaflet plugins page has flaws. This is an attempt on making a simple, good-looking (though not as good as MapBox's) search control. You just click a button, type a string and press Enter key. There are only two configurable options:
 
 * `title`: title text on the control.
 * `email`: e-mail address that will be sent to Nominatim server. It can be used for determining a source of suspicious activity. You should use this option, especially if the control is installed on a popular website.
