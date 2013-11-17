@@ -51,7 +51,7 @@ Aside from the map and layers panel, there are some other parameters you may be 
 * **Enable MapBBCode Share integration:** when enabled, users will be able to include external maps instead of drawing them from scratch, and upload maps to an external server. Usually it is [share.mapbbcode.org](http://share.mapbbcode.org/), although you can have your own instance.
 * **MapBBCode Share server address:** this is where you put your MapBBCode Share instance's address if you have one.
 
-See [FAQ](faq.html) if you have any questions, and don't hesitate to [ask the author](mailto:zverik@textual.ru) is you haven't found an answer.
+See the [FAQ page](faq.html) if you have any questions, and don't hesitate to [ask the author](mailto:zverik@textual.ru) if you haven't found an answer.
 
 <script>
 var config = new MapBBCodeConfig({
