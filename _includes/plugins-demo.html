@@ -63,7 +63,7 @@ mapec.addControl(L.exportControl({ codeid: 'nwrxs' }));
 L.popup({ closeButton: false, closeOnClick: false }).setLatLng([0, 22]).setContent('Instead of this popup, what will be exported is <a href="http://share.mapbbcode.org/nwrxs" target="sharemap">this map</a>.').openOn(mapec);
 
 // L.Control.PermalinkAttribution
-var mappa = L.map('mappa', { scrollWheelZoom: false }).setView(spbPos, 13);
+var mappa = L.map('mappa', { scrollWheelZoom: false, attributionEditLink: true }).setView(spbPos, 13);
 L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', { attribution: 'Map &copy; <a href=\"http://openstreetmap.org\">OSM</a> | Tiles &copy; <a href=\"http://www.opencyclemap.org/?lat={lat}&lon={lon}&zoom={zoom}\">Andy Allan</a>', minZoom: 0, maxZoom: 18 }).addTo(mappa);
 L.polyline([[59.9412, 30.3207], [59.9304, 30.3556]]).addTo(mappa);
 L.polyline([[59.9319, 30.3420], [59.9304, 30.3556], [59.9359, 30.3465]]).addTo(mappa);
