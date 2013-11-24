@@ -9,6 +9,10 @@ You don't store presentation information (layer, dimensions, map title) in the [
 
 Map BBCode stores *what* to display, not *how*. The only exception are zoom/coordinate attributes of [map] tag, which could be considered an object in itself: when a code is empty, those attributes can center a map of a feature being discussed. Using those attributes along with objects is not recommended, and the library does not produce such code. Markers are better suited for drawing attention to certain parts of a map, and unpredictable panel dimensions make fiddling with initial zoom level pointless.
 
+**How do I delete an object from a map?**
+
+Click on that object (for a line, click on it, not on rectangular markers), and you'll see a popup panel. There will be a "Delete" button.
+
 **Which map layers would you recommend for forum maps?**
 
 In that order:

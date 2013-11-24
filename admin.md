@@ -19,21 +19,7 @@ For Google and Yandex the libraries are corresponding Map APIs. Esri and Bing la
 
 While moving layers around, you will find that it is impossible to have a proprietary layer for a default one. You should have at least one OpenStreetMap-based layer for that. This restriction is raised because the author doesn't wish for his plugins to become free Google Maps plugins. He comes from OSM project and wishes for it to be known and to grow. It is not hard to circumvent the restriction, but please do not. If you want a proprietary map for your forum or blog, find another plugin, made specially for that. As for OSM layers, there are some pretty and informative instances, like OpenMapSurfer and MapQuest Open.
 
-<div>
-<select size="1" id="layers"></select> <input type="button" id="layeradd"/>
-</div>
-<div id="bingkey">
-<span id="bingtitle"></span>
-<input type="text" size="60" id="keyvalue"/>
-</div>
-<div id="map"></div>
-
-<div id="values">
-<div>Default position and zoom: <span id="zoompos"></span></div>
-<div>View panel size: <span id="viewsize"></span></div>
-<div>Editor panel height: <span id="editheight"></span></div>
-<div>Editor window size: <span id="winsize"></span></div>
-</div>
+{% include admin.html %}
 
 A map panel can have three states: display/normal, display/expanded and editable. The editor can be either opened in a popup window or appear in an inline panel. You can configure those modes and panel dimensions using 6 buttons: 4 arrows for shrinking and expanding the panel, and 2 switches. "View/Editor" selects which state are you editing, and the button below it toggles behaviour: in "View" mode you choose whether the map panel will be displayed small with an option to expand it to full width, or expanded by default; in "Editor" — whether to use a window or an inline panel.
 
@@ -52,30 +38,3 @@ Aside from the map and layers panel, there are some other parameters you may be 
 * **MapBBCode Share server address:** this is where you put your MapBBCode Share instance's address if you have one.
 
 See the [FAQ page](faq.html) if you have any questions, and don't hesitate to [ask the author](mailto:zverik@textual.ru) if you haven't found an answer.
-
-<script>
-var config = new MapBBCodeConfig({
-	layers: ['OpenMapSurfer', 'OpenStreetMap'],
-	viewWidth: 550,
-	fullViewHeight: 400
-});
-config.bindLayerAdder({
-	select: 'layers',
-	button: 'layeradd',
-	keyBlock: 'bingkey',
-	keyTitle: 'bingtitle',
-	keyValue: 'keyvalue',
-	keyBlockDisplay: 'block'
-});
-config.on('show change', function(o) {
-	function set(span, value, enabled) {
-		document.getElementById(span).innerHTML = value;
-		document.getElementById(span).style.color = enabled ? 'black' : '#aaa';
-	}
-	set('zoompos', o.defaultZoom + ',' + o.defaultPosition[0] + ',' + o.defaultPosition[1], true);
-	set('viewsize', o.fullFromStart ? '100% × ' + o.fullViewHeight : o.viewWidth + '×' + o.viewHeight, true);
-	set('editheight', o.editorHeight, !o.editorInWindow);
-	set('winsize', o.windowWidth + '×' + o.windowHeight, o.editorInWindow);
-});
-config.show('map');
-</script>
