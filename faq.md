@@ -76,6 +76,10 @@ The first one. The topmost one in the configuration interface. Not the one that 
 
 This is a [Leaflet library issue](https://github.com/Leaflet/Leaflet/issues/2086).
 
+**Can I add more than 5 layers?**
+
+No.
+
 **I want a custom layer included in a layer list that forum admins use**
 
 Add this line to scripts in page templates before MapBBCode objects instantiation:
