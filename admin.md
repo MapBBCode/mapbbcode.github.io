@@ -44,7 +44,7 @@ Aside from the map and layers panel, there are some other parameters you may be 
 
 ## Configuring MapBBCode
 
-Most MapBBCode plugins allow for extending the library's functionality. It is made in two ways:
+Most MapBBCode plugins allow for extending the library's functionality. It is done in two ways:
 
 ### Add-ons
 
@@ -54,7 +54,7 @@ Add-ons are separate javascript files that need to be included after `mapbbcode*
 * page header template(s)
 * configuration page template (only for additional layers)
 
-Some of those files may be modified in a plugin, so it's better to search by a substring "put MapBBCode add-ons here". For most plugins it marks places where you need to put inclusion tags for add-on scripts. Please mind correct paths to js files.
+Some of those files may be modified in a plugin, so it's better to search for a comment "put MapBBCode add-ons here". For most plugins it marks places where you need to put inclusion tags for add-on scripts. Please mind correct paths to js files.
 
 There are some add-ons distributed with MapBBCode by default. First, a length measurement plugin, `Param.Length.js`. It resides alongside `mapbbcode.js` and adds a measurement panel to maps.
 
