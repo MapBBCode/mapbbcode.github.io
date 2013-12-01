@@ -3,6 +3,25 @@ layout: default
 title: How to write a forum modification
 ---
 
+1. [Quick Start](#toc_0)
+	1. [Include libraries in a page header](#toc_1)
+	2. [Process \[map\] bbcode](#toc_2)
+	3. [Add a button to the posting page](#toc_3)
+2. [Improvements](#toc_4)
+	1. [\[mapid\] bbcode](#toc_5)
+	2. [Localization](#toc_6)
+	3. [Add-ons](#toc_7)
+	4. [Disable maps in signatures](#toc_8)
+	5. [Configuration](#toc_9)
+	6. [Administration panel](#toc_10)
+	7. [Libraries only when needed](#toc_11)
+	8. [Global on/off switch](#toc_12)
+3. [Checklist](#toc_13)
+	1. [Forum posts](#toc_14)
+	2. [Private messages](#toc_15)
+	3. [External maps](#toc_16)
+	4. [Administration](#toc_17)
+
 ## Quick start
 
 Writing forum modifications is hard, especially if you haven't done it before, so we'll start with minimum number of steps to display [map] bbcode in threads.
@@ -22,9 +41,9 @@ Usually there is a main theme, like `subSilver` or `proSilver` in phpBB. Find a 
 <![endif]-->
 <script src="includes/mapbbcode/leaflet.js"></script>
 <script src="includes/mapbbcode/leaflet.draw.js"></script>
-<script src="includes/mapbbcode/Bing.js"></script>
 <script src="includes/mapbbcode/mapbbcode.js"></script>
 <script src="includes/mapbbcode/mapbbcode-config.js"></script>
+<script src="includes/mapbbcode/proprietary/Bing.js"></script>
 <script language="Javascript" type="text/javascript">
 <!--
 var mapBBcode = new MapBBCode({
@@ -107,22 +126,11 @@ Of course, some adminitrators would like to disable the interaction with externa
     
 ### Localization
 
-If possible, it would be best to keep MapBBCode translation strings in a separate file. Those are used in header templates (remember there can be more than one), right after `mapBBcode` object initialization:
+Translation strings for MapBBCode are kept in the library's directory, in `lang/{Language}.js` and `lang/{Language}.Config.js` files. You would need to include the file for a current language after `mapbbcode.js`. The name for the file can be kept in a plugin translation script.
 
-```javascript
-mapBBcode.setStrings({
-    close: '{L_MAPBB_CLOSE}',
-    remove: '{L_MAPBB_REMOVE}',
-    apply: '{L_MAPBB_APPLY}',
-    cancel: '{L_MAPBB_CANCEL}',
-    // ...
-    helpContents: [{L_MAPBB_HELPCONTENTS}]
-});
-```
+### Add-ons
 
-See src/strings/English.js in MapBBCode repository for the full list of properties. Here `{L_WHATEVER}` are template variables that contain translated strings. Some engines would require to initialize these variables somewhere in code. Don't forget to screen `'` and `\` characters.
-
-The last property, `helpContents`, is an array of strings. It looks like `['line1', 'line2', ..., 'final line']`. It's up to you how this property is defined in a language file (preferably also as an array) and assigned to a template variable.
+Forum administrators will definitely want to include some add-ons or proprietary layers. So your plugin should be easily extensible. That is, the number of places an administrator needs to edit in order to add an add-on script should be kept to a mininum. Almost in all cases it is possible to make it two files: some of yours and `mapbbcode-window.html`. If there is an installation process, you can modify that html's contents in it, so it would be needed to add add-ons only in one place. See existing plugins to learn different approaches to that task.
 
 ### Disable maps in signatures
 
@@ -165,8 +173,8 @@ Configuration panels are usually separate files. Just use a regular key-value pa
     <link rel="stylesheet" href="../includes/mapbbcode/leaflet.ie.css" />
 <![endif]-->
 <script src="../includes/mapbbcode/leaflet.js"></script>
-<script src="../includes/mapbbcode/Bing.js"></script>
 <script src="../includes/mapbbcode/mapbbcode-config.js"></script>
+<script src="../includes/mapbbcode/proprietary/Bing.js"></script>
 ```
 
 Eleven properties are edited with a javascript user interface, and in a form these are represented with hidden fields (your field names may be different, depending on a forum engine's coding style):
@@ -271,6 +279,8 @@ config.show('panel_config');
 ```
 
 On the server side, this page should receive its values from the database and update them afterwards. Again, you should use another key-value page as a template. When finished, check that changes made in the configuration panel are reflected on forum pages.
+
+Remember that localization and add-ons also apply to the administration page.
 
 ### Libraries only when needed
 

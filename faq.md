@@ -13,6 +13,10 @@ Map BBCode stores *what* to display, not *how*. The only exception are zoom/coor
 
 Click on that object (for a line, click on it, not on rectangular markers), and you'll see a popup panel. There will be a "Delete" button.
 
+**How to remove a point from a line?**
+
+Click on one of those white rectangles. And if you drag one of semi-transparent rectangles, you'll create a new node in that place.
+
 **Which map layers would you recommend for forum maps?**
 
 In that order:
