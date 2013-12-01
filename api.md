@@ -3,23 +3,31 @@ layout: default
 title: API Reference
 ---
 
-`MapBBCode.js` methods are explained on the [BBCode page](bbcode.html). In `MapBBCodeUI.js` and `MapBBCodeUI.Editor.js` there are only 4 public methods combined. Note that when built separately, UI scripts require `MapBBCode.js`, `EditorSprites.js` (base64 contents of a PNG image with button icons) and `FunctionButton.js` (see below). They also support all other modules described in the [Leaflet plugins page](leaflet.html), but can work without them.
+`MapBBCodeUI.js` and `MapBBCodeUI.Editor.js` contain only 6 public methods combined. Note that when built separately, UI scripts require `MapBBCode.js`, `EditorSprites.js` (base64 contents of a PNG image with button icons) and `FunctionButton.js` (see below). They also support all other modules described in the [Leaflet plugins page](leaflet.html), but can work without them.
 
 ## Methods
 
 * `setStrings( <Object> strings )`: replaces strings with provided translations. See `strings/English.js` for default values.
 * `show( <HTMLElement/String> div, <String/HTMLElement> bbcode )`: creates a map inside a given element (can be referenced by id) for given bbcode. can be extracted from an HTML element: it can be in `bbcode` or `value` attributes, or inside it.
-* `showExternal( <HTMLElement/String> div, <String> id )`: download a map from a map sharing service and display it, along with an export button and a link to the service.
-* `editor( <HTMLElement/String> div, <String/HTMLTextArea> bbcode, callback, context )`: creates an editor in the given panel, possibly pre-initialized with bbcode. The latter is either a string or a textarea, in latter case caret position is taken into account, and the code is replaced after applying changes.
+* `showExternal( <HTMLElement/String> div, <String> id, <Function> callback, context )`: download a map from a map sharing service and display it, along with an export button and a link to the service. The `callback` function receives the control object (see below) after a successful initialization.
+* `editor( <HTMLElement/String> div, <String/HTMLTextArea> bbcode, <Function> callback, context )`: creates an editor in the given panel, possibly pre-initialized with bbcode. The latter is either a string or a textarea, in latter case caret position is taken into account, and the code is replaced after applying changes.
     Calls `callback` when "Apply" or "Cancel" buttons are clicked, with a single parameter of new bbcode.
 * `editorWindow( <String/HTMLTextArea> bbcode, callback, context )`: opens a new window with an editor for given bbcode (see `editor()`). Does not return anything.
 
-Methods `show` and `editor` return an object with a `map` property, `editor` flag and methods to control the panel:
+For custom bbcode processing two methods used internally were made public:
 
+* `objectToLayer( <Object> obj )`: converts an object that `MapBBCodeProcessor` produces into a Leaflet layer, applying all modifications by handlers.
+* `layerToObject( <ILayer> layer )`: converts a Leaflet layer into an object for feeding to `MapBBCodeProcessor`. Note that some parameters processed by handlers may be lost or determined incorrectly due to extra initialization code in handlers.
+
+Methods `show` and `editor` return a control object with those properties and methods:
+
+* `map`: a reference to Leaflet map object.
+* `editor`: boolean flag for UI type.
 * `close()`: removes all elements, "closes" the panel.
 * `zoomToData()`: zooms and pans the map view to the data.
 * `getBBCode()`: returns BBCode string for objects currently displayed.
 * `updateBBCode( <String> bbcode, <Boolean> noZoom )`: removes all objects in a panel and replaces them with those defined in the given bbcode. If `noZoom` is `true`, doesn't zoom and pan to new objects.
+* `eachLayer( <Function> callback, context )`: iterates over map objects, which are Leaflet layers.
 
 ## Options
 
@@ -54,33 +62,74 @@ Other options:
 |---|---|---|---
 | `maxInitialZoom` | Number | `15` | Maximum zoom level for displayed features. Prevents zooming too close for single markers.
 | `letterIconLength` | Number | `2` | Maximum title length for using `L.LetterIcon` for markers.
-| `popupIconLength` | Number | `50` | Maximum title length for using `L.PopupIcon` for markers.
+| `popupIconLength` | Number | `30` | Maximum title length for using `L.PopupIcon` for markers.
 | `externalEndpoint` | String | *see source code* | URL of a map sharing server, for `showExternal()` and the upload button.
 | `uploadButton` | Boolean | `false` | Whether to allow uploading maps to a sharing server from editor.
 | `shareTag` | String | `'mapid'` | A bbcode tag for external map id. If empty, upload button is hidden and `showExternal()` method is disabled.
 | `polygonOpacity` | Number | `0.1` | Fill opacity for polygons.
 | `leafletOptions` | Object | `{}` | Additional options passed to `L.Map` constructor.
 | `hideInsideClasses` | String[] | `[]` | List of classes inside which map panel will not be displayed (useful for disabling maps in signatures).
+| `watchResize` | Boolean | `false` | Whether to watch the map panel for resizing (otherwise map may become buggy).
 | `enablePolygons` | Boolean | `true` | Whether to show polygon drawing button in the editing toolbar.
 | `helpButton` | Boolean | `true` | Whether to show help button in the editor.
 | `editorCloseButtons` | Boolean | `true` | Whether to show "Apply" and "Cancel" buttons in the editor.
 | `confirmFormSubmit` | Boolean | `true` | If the editor is opened inside a form, inform a user of losing changes when the form is submitted.
 | `windowFeatures` | String | 'resizable,status,dialog' | Parameters for `window.open()` used for opening an editor window.
 | `windowPath` | String | 'lib/mapbbcode-window.html' | Path (relative or absolute) to the editor window page (file name can be omitted).
+| `panelHook` | Function | `null` | A function that receives a control object (see above) right after the UI has been initialized. Can be used to alter UI behaviour both in a viewing panel and in a window.
 
-## Parameter Processors
+# Handlers
 
-Since the [BBCode specification](bbcode.html) states that the only customizable part of [map] bbcode is object parameter set, parameter processing and editing panels in the editor have been made pluggable. There are two mandatory modules (text and color) and several example modules.
+MapBBCode UI functionality can be extended with handlers. Usually they process bbcode parameters: the [BBCode specification](bbcode.html) states that the only customizable part of [map] bbcode is object parameter set. But it is possible to do virtually anything with handlers, like add an extra buttons or a layer to the map, or create a useful control, like the length measurement handler does. Text and Color handlers are mandatory for MapBBCode (though it can work without them), others are optional.
 
-To create a new parameter module, you have to push to `window.MapBBCode.objectParams` array an object with the following properties and methods (only the first four are mandatory):
+To create a new handler, you have to push to `window.mapBBCodeHandlers` array an object with the following properties and methods (only `applicableTo` is mandatory):
 
 * `<RegExp>   reKeys`: regular expression that matches parameters processed by this module.
 * `<Boolean>  applicableTo( <ILayer> layer )`: tests that given layer can contain module's properties.
 * `           objectToLayer( <ILayer> layer, <String[]> params, <MapBBCode> ui )`: modifies the layer according to the properties, which are filtered by `reKeys`, so there usually is no more than one.
 * `<String[]> layerToObject( <ILayer> layer, <String[]> lastParams, <MapBBCode> ui )`: reads properties off the layer and returns them in a string array. `lastParams` array contains properties that the object had before it was edited.
 * `           initLayer( <ILayer> layer )`: initializes newly created layer with default property values.
-* `           initDrawControl( <Control.Draw> draw )`: modifies [Leaflet.draw](https://github.com/leaflet/leaflet.draw) control according to default property values.
+* `           initDrawControl( <L.Control.Draw> draw )`: modifies [Leaflet.draw](https://github.com/leaflet/leaflet.draw) control according to default property values.
 * `<HTMLElement> createEditorPanel( <ILayer>layer, <MapBBCode> ui )`: creates a panel that will be included in an object popup. It should read and allow editing the property that's processed by the module.
+* `           panelHook( <Object> control, <MapBBCode> ui )`: this method is called after MapBBCode UI initialization, see `panelHook` option in previous section.
+
+# MapBBCodeProcessor
+
+[MapBBCode.js](https://github.com/MapBBCode/mapbbcode/blob/master/src/MapBBCode.js)
+is a reference implementation of parsing and generating map bbcode. It contains
+complete regular expressions for the code and following methods:
+
+* `isValid( <String> bbcode )`: tests that the string is a valid map bbcode.
+* `stringToObjects( <String> bbcode )` parses a bbcode string into an object:
+
+        {
+          objs: [{
+            coords: [<coordinate>, ...],
+            text: <string>,
+            params: [<string>, ...]
+          }, ...],
+          zoom: <number>,
+          pos: <coordinate>
+        }
+
+    Format of `<coordinate>` depends of whether you have [Leaflet](http://leafletjs.com)
+    library included: it will be either `L.LatLng` object or an array of two numbers:
+    `[latitude, longitude]`.
+* `objectsToString( <Object> objs )` takes an object in the same format as the `stringToObjects` produces and returns a bbcode string.
+* `setOptions( <Object> options )`: changes option values (see below).
+
+| Option | Type | Default |  Description
+|---|---|---|---
+| `decimalDigits` | Number | 5 | Number of decimal digits in coordinates in generated bbcode.
+| `brackets` | String | `[]` | Brackets for bbcode. Can be replaced with `<>` or `()`.
+| `tagParams` | Boolean | `false` | If set to `true`, opening tag should be specified with parameters: `[map z="1" ll="2,3"]`. Together with `brackets` option this allows for HTML-like tags.
+
+Since brackets can be modified, there are some extra methods for getting opening and closing tags. All of them return strings.
+
+* `getOpenTagSubstring()`: returns an opening bracket and `map`, useful for finding where a bbcode starts.
+* `getOpenTag( <Number> zoom, <String> coords )`: constructs an opening tag.
+* `getOpenTagWithPart( <String> extra )`: constructs an opening tag using a whole extra part after `map`.
+* `getCloseTag()`: returns a closing bbcode tag.
 
 # Configuration Tool
 

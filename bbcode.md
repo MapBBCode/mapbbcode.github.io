@@ -111,6 +111,8 @@ projects.
 * `objectsToString(object)` takes an object in the same format as the `stringToObjects`
   produces and returns a bbcode string.
 
+See complete description of that class in [API reference](api.html).
+
 ## Improvements
 
 The format of map bbcode is set in stone. But element parameters, `<words>` nonterminal in BNF,
