@@ -3,6 +3,10 @@ layout: default
 title: How to write a forum modification
 ---
 
+This is a complete documentation on integrating MapBBCode into engines. If you have skills to do that, please make a plugin implementing all those features and publish it under an open license. By doing this you will help open maps conquer the internet.
+
+A simpler way to embed MapBBCode into a website for people who cannot program or are too lazy is [MapBBCode Loader](https://github.com/MapBBCode/mapbbcode-loader): a single script that can serve as a plugin. A complete 5-step walkthrough is included in the repository.
+
 1. [Quick Start](#toc_0)
 	1. [Include libraries in a page header](#toc_1)
 	2. [Process \[map\] bbcode](#toc_2)
