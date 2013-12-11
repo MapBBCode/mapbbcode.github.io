@@ -19,7 +19,7 @@ A plain string, like `[url]...[/url]` BBCode, that describes geolocated objects:
     [map]59.939,30.3159(Dvortsovaya); 59.9371,30.3127 59.9312,30.3602(black|);
     59.9458,30.3324 59.939,30.3369 59.9341,30.335 59.9226,30.3078[/map]
 
-While it looks complex ([the specification](bbcode.html) is quite long), like `[url]` code is turned into links, a MapBBCode plugin converts `[map]` bbcode into nice interactive maps. And users don't have to type those numbers by hand: an editor is also provided.
+While it seems complex ([the specification](bbcode.html) is quite long), like `[url]` code is turned into links, a MapBBCode plugin converts `[map]` bbcode into nice interactive maps. And users don't have to type those numbers by hand: an editor is also provided.
 
 ## How do I create a map?
 
@@ -31,20 +31,20 @@ To add a feature on the map, click one of the three icons at the left. The last 
 
 Drawing a line or a polygon is easy because of helpful tooltips. After finishing the feature, there are a path (usually of blue color) and a set of rectangular markers. Drag a marker to alter the shape (dragging a semi-transparent marker adds a node at that position), click on it to remove a node from the shape. Clicking on a feature away from markers opens a popup panel, similar to marker's one, but with a different set of properties. You can delete the feature from it, and there usually is a color chooser.
 
-An adminitrator can install extensions to the MapBBCode library. Some of them add properties to features, like a width chooser for paths. Other add informative controls: for example, length handler displays the total length of all paths on a map, and when hovering a cursor over a path, it shows the length of those you hover over.
+An administrator can install extensions to the MapBBCode library. Some of them add properties to features, like a width chooser for paths. Other add informative controls: for example, length handler displays the total length of all paths on a map, and when hovering a cursor over a path, it shows the length of those you hover over.
 
-Don't just remember all you've read, but try it on this map (or the one that opens with the "Map" button above, or the one on [the front page](index.html)). You won't break anything, and if you manage to, just reload the page. Since the MapBBCode library is build with open-source components, you may encounter similar controls on other websites.
+Don't just remember all you've read, but try it on this map (or the one that opens with the "Map" button above, or the one on [the front page](index.html)). You won't break anything, and if you manage to, just reload the page. Since the MapBBCode library is built with open-source components, you may encounter similar controls on other websites.
 
 <div id="edit"></div>
 
 ## What's "Upload" button for?
 
-You should know about [MapBBCode Share](http://share.mapbbcode.org) service. It is built with MapBBCode library (so this guide also applies to it), and allows for sharing maps on the web. Anything that is drawn there can be embedded in a page: actually, the first map on this guide is external, and you can see the original by clicking the arrow button at the top right corner.
+You should know about [MapBBCode Share](http://share.mapbbcode.org) service. It is built with MapBBCode library (so this guide also applies to it), and allows for sharing maps on the web. Anything that is drawn there can be embedded in a page: actually, the first map in this guide is external, and you can see the original by clicking the arrow button at the top right corner.
 
 External (or "shared") maps have several advantages over regular ones:
 
 1. There is an "Export" button for downloading a map in a multitude of file formats, including GPX and CSV.
-2. One map can be included in many places that support map bbcode.
+2. A single map can be included in many places that support map bbcode.
 3. When a map is edited at MapBBCode Share, it is automatically updated everywhere it is included.
 4. By sharing a link to edit a map, you can collaborate with friends in making it.
 
@@ -52,7 +52,7 @@ If after drawing a map you click "Upload" button instead of "Apply", the map wil
 
 To include an already drawn map from MapBBCode Share, click the "Upload" button without drawing anything. There will be an input field where you paste the browsing link to your map. If that link checks out, its code will be included in a post. Alternatively you can just write a `[mapid]` code by hand.
 
-That concludes the guide. If you still have questions, please refer to the [FAQ page](faq.html).
+If you still have questions, please refer to the [FAQ page](faq.html).
 
 <script>
 var mapBB = new MapBBCode({
