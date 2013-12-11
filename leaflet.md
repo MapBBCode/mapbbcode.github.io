@@ -124,7 +124,7 @@ The object has some methods to simplify working with the layer list:
 * `<String>   getKeyLink( <String> id )`: returns an URL for a developer key required for a layer, or an empty string if there is no URL or the layer does not need a key.
 * `<ILayer[]> getLeafletLayers( <String[]> ids, <Leaflet> L )`: converts an array of ids to array of layers ready to be added to a Leaflet map.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LayerList.js)
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/layers/LayerList.js)
 
 ``` javascript
 map.addLayer(window.layerList.getLeafletLayer('OpenStreetMap'));
