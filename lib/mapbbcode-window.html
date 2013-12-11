@@ -11,6 +11,7 @@
 <script src="leaflet.js"></script>
 <script src="leaflet.draw.js"></script>
 <script src="mapbbcode.js"></script>
+<script src="LayerList.js"></script>
 <script src="Bing.js"></script>
 <script src="Handler.Length.js"></script>
 <!-- put MapBBCode add-ons here -->
@@ -26,6 +27,7 @@ function edit() {
     mapBB.setStrings(stored.caller.strings);
     window.MapBBCodeProcessor.options = opener.MapBBCodeProcessor.options;
     mapBB.options.editorHeight = 0;
+    mapBB.options.editorCloseButtons = true;
     mapBB.editor('edit', stored.bbcode, function(res) {
         window.close();
         if( stored.callback )
