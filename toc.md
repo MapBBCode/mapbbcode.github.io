@@ -8,6 +8,7 @@ On this website (please help us [translating](https://github.com/MapBBCode/mapbb
 
 * [User's Guide](guide.html)
 * [Administrator's Guide](admin.html)
+* [Developer's Guide](tutorial.html)
 * [BBCode Specification](bbcode.html)
 * [API Reference](api.html)
 * [Leaflet Plugins](leaflet.html)
