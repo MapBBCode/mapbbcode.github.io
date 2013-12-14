@@ -25,7 +25,7 @@ While it seems complex ([the specification](bbcode.html) is quite long), like `[
 
 Look for a button somewhere near an "insert image" bbcode button. It might have a small marker for an image, or a <input type="button" value="Map" id="mapedit"/> label. It opens a map editor window. Take note where the cursor is placed in a text pane: if it is inside a map bbcode, it will be edited, instead of creating a new map.
 
-The editor window has a few extra buttons. First, there are "Apply" and "Cancel": do not forget to press the first one when done editing. The "**?**" button opens a help window (which might have contained this text, but we can't depend on the internet connection), and clicking the magnifier button opens a search input field, which can teleport you to any place on the map.
+The editor window has a few extra buttons. First, there are "Apply" and "Cancel": do not forget to press the first one when done editing. The "**?**" button opens a help window (which might have contained this text, but it's too complex for that), and clicking the magnifier button opens a search input field, which can teleport you to any place on the map.
 
 To add a feature on the map, click one of the three icons at the left. The last one places a marker: you just click on the map and type a label for it. Then it can be dragged to another location, and with a click you can change its label or delete the marker. Always try clicking on things: you won't break anything (and there is a "Cancel" button), but you might learn something new.
 
@@ -54,21 +54,4 @@ To include an already drawn map from MapBBCode Share, click the "Upload" button 
 
 If you still have questions, please refer to the [FAQ page](faq.html).
 
-<script>
-var mapBB = new MapBBCode({
-	windowPath: '/lib/',
-	layers: 'OpenMapSurfer,OpenStreetMap,Stamen Watercolor',
-	viewWidth: 550,
-	fullViewHeight: 450,
-	editorHeight: 300,
-	editorCloseButtons: false
-});
-mapBB.showExternal('view', 'pgzpu');
-
-var bbcode = '[map]59.9342,30.6(F); 59.4366,24.7529(S); 59.377,28.204(QWOP); 59.934,30.337 59.718,30.037 59.39,28.532 59.372,27.444 59.9,26.807 59.367,26.433 59.469,26.016 59.437,24.753[/map]';
-mapBB.editor('edit', bbcode);
-
-document.getElementById('mapedit').onclick = function() {
-	mapBB.editorWindow('');
-}
-</script>
+{% include viewedit.html %}

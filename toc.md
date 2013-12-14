@@ -14,7 +14,7 @@ On this website (please help us [translating](https://github.com/MapBBCode/mapbb
 * [Leaflet Plugins](leaflet.html)
 * [Frequently Asked Questions](faq.html)
 * [Embedding MapBBCode](embedding.html)
-* [MapBBCode in Forums](forums.html)
+* [MapBBCode Installations](forums.html)
 
 Elsewhere:
 

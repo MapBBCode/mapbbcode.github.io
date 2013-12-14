@@ -10,7 +10,7 @@ Regardless of a forum or blog engine, a good MapBBCode plugin has a configuratio
 
 ### Layers
 
-Layers are chosen from a [predefined list](https://github.com/MapBBCode/mapbbcode/blob/master/src/config/LayerList.js). By default it has OpenStreetMap-based layers and, often, a Bing Imagery layer. For most layers you just select them and click "Add", then fixing the order by clicking up and down arrows near the layer name. All map panels on the forum will have the first layer in the list shown by default, and users can choose other layers, but their layer preferences are not saved.
+Layers are chosen from a [predefined list](https://github.com/MapBBCode/mapbbcode/blob/master/src/layers/LayerList.js). By default it has OpenStreetMap-based layers and, often, a Bing Imagery layer. For most layers you just select them and click "Add", then fixing the order by clicking up and down arrows near the layer name. All map panels on the forum will have the first layer in the list shown by default, and users can choose other layers, but their layer preferences are not saved.
 
 Some layers, like Cloudmade's, require a developer key. When you select one of them, a text field appears, along with a link to the website where you can register and acquire the key. If you entered it incorrectly, you can remove the layer and try again.
 
@@ -56,7 +56,7 @@ Add-ons are separate javascript files that need to be included after `mapbbcode*
 
 Some of those files may be modified in a plugin, so it's better to search for a comment "put MapBBCode add-ons here". For most plugins it marks places where you need to put inclusion tags for add-on scripts. Please mind correct paths to js files.
 
-There are some add-ons distributed with MapBBCode by default. First, a length measurement plugin, `Param.Length.js`. It resides alongside `mapbbcode.js` and adds a measurement panel to maps.
+There are some add-ons distributed with MapBBCode by default. First, a length measurement plugin, `Handler.Length.js`. It resides alongside `mapbbcode.js` and adds a measurement panel to maps.
 
 Second, proprietary layers. If you want to have Google or Yandex layers, add the following line (replace `{PROVIDER}` with a provider name):
 

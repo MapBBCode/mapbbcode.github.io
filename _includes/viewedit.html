@@ -1,0 +1,18 @@
+<script>
+var mapBB = new MapBBCode({
+	windowPath: '/lib/',
+	layers: 'OpenMapSurfer,OpenStreetMap,Stamen Watercolor',
+	viewWidth: 550,
+	fullViewHeight: 450,
+	editorHeight: 300,
+	editorCloseButtons: false
+});
+mapBB.showExternal('view', 'pgzpu');
+
+var bbcode = '[map]59.9342,30.6(F); 59.4366,24.7529(S); 59.377,28.204(QWOP); 59.934,30.337 59.718,30.037 59.39,28.532 59.372,27.444 59.9,26.807 59.367,26.433 59.469,26.016 59.437,24.753[/map]';
+mapBB.editor('edit', bbcode);
+
+document.getElementById('mapedit').onclick = function() {
+	mapBB.editorWindow('');
+}
+</script>
