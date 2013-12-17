@@ -15,7 +15,7 @@ A round icon with a white border and text inside. Can be used to display markers
 | `color` | String | `'black'` | CSS color of icon background.
 | `radius` | Number | `11` | Icon radius.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/LetterIcon.js)
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/LetterIcon.js)
 
 ```javascript
 L.marker([11, 22], { icon: L.letterIcon('Big', { radius: 20 }), clickable: false }).addTo(map);
@@ -25,9 +25,14 @@ L.marker([11, 22], { icon: L.letterIcon('Big', { radius: 20 }), clickable: false
 
 ## L.PopupIcon
 
-An icon that looks like a popup panel, but significantly smaller. Title should be passed to the constructor. Has only one option: `width` for maximum icon width.
+An icon that looks like a popup panel, but significantly smaller. Title should be passed to the constructor.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PopupIcon.js)
+| Option | Type | Default | Description
+|---|---|---|---
+| `width` | Number | `150` | Maximum icon width.
+| `selectable` | Boolean | `false` | If set, text on the icon can be selected, but marker cannot be clicked or dragged.
+
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/PopupIcon.js)
 
 ```javascript
 L.marker([11, 22], { icon: L.popupIcon("Don't click me"), clickable: false }).addTo(map);
@@ -39,13 +44,25 @@ L.marker([11, 22], { icon: L.popupIcon("Don't click me"), clickable: false }).ad
 
 This control simplifies creating simple Leaflet controls that invoke javascript functions when clicked. It supports multiple actions on one control: in that case they are stacked vertically, like on a standard zoom control.
 
-Class contructor accepts two parameters: an array of labels for actions (strings, image URLs or html elements) and an options object. The latter may contain `titles` array of strings, which would be used as title attributes, and `bgPos` array of [dx, dy] arrays that define offsets for image content. Other options (one option, actually: `position`) are inherited from the [L.Control](http://leafletjs.com/reference.html#control) class.
+Class contructor accepts two parameters: an array of button objects and an options object. Button objects can have following properties:
 
-An action inside a function button can be updated with `setContent(id, content)` and `setTitle(id, title)` methods. Image content offset can be altered with `setBgPos(id, bgPos)` method.
+| Property | Type | Description
+|---|---|---|---
+| `content` | String or Node | A string, image data URL or a component to display inside a button.
+| `alt` | String | A string to display in case `content` is empty.
+| `title` | String | Title attribute.
+| `href` | String | URL for a button. If set, `clicked` events are not generated, the button acts as a regular link.
+| `bgColor` | String | CSS color for a button background.
+| `imageSize` | Number | Background image size (when `content` is image data URL, the same for width and height, default `26`).
+| `bgPos` | Array | Two numbers for `x` and `y` offset of button background image (when `content` is image data URL).
+
+Some function button properties can be updated with `setContent(id, content)`, `setTitle(id, title)`, `setHref(id, href)` and `setBgPos(id, bgPos)` methods. For a single button `id` can be skipped, it defaults to `0`.
+
+The only option, `position`, is inherited from the [L.Control](http://leafletjs.com/reference.html#control) class and stores a corner in which the button is displayed.
 
 When clicked, the control emits a Leaflet event `clicked` with a single data property, `idx`: zero-based index of an action that was selected.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/FunctionButton.js)
 
 ```javascript
 var btn = L.functionButtons([{ content: 'Saint-Petersburg' }, { content: 'Hide buttons'}]);
@@ -60,10 +77,6 @@ map.addControl(btn);
 ```
 
 <div class="map" id="mapfb"></div>
-
-### L.FunctionButton
-
-This is a subclass of `L.FunctionButtons` designed to work with a single action. It accepts a single object with options in the contructor, its `setContent()`, `setTitle()` and `setBgPos()` methods accept a single parameter.
 
 ## L.StaticLayerSwitcher
 
@@ -82,6 +95,7 @@ The constructor accepts two parameters. The first one is a layer list, either an
 | `bgColor` | String | `'white'` | Background CSS color of a layer switcher.
 | `selectedColor` | String | `#ddd` | Background CSS color of a selected layer line.
 | `editable` | Boolean | `false` | Whether a user can move and delete layers.
+| `enforceOSM` | Boolean | `false` | Whether the first layer should be OSM-based.
 
 Those methods can be used to get and manipulate layers in a layer switcher:
 
@@ -90,7 +104,7 @@ Those methods can be used to get and manipulate layers in a layer switcher:
 * `<ILayer>   getSelectedLayer()`: returns a currently selected layer.
 * `<String>   getSelectedLayerId()`: returns an identifier of a currently selected layer.
 * `<ILayer>   addLayer( <String> id, <ILayer> layer )`: appends a layer with given id to the end of the layer list. If `layer` is omitted, `window.layerList` is queried for a given `id`. Returns a layer that was added, or `null` if operation failed.
-* `<ILayer>   updateLayer( <ILayer> layer, <String> id )`: updated an identifier for a layer. In case the layer was created by `window.layerList`, recreates it. Returns a layer, an id for which was updated, or `null` if operation failed.
+* `<ILayer>   updateId( <ILayer> layer, <String> id )`: updated an identifier for a layer. In case the layer was created by `window.layerList`, recreates it. Returns a layer, an id for which was updated, or `null` if operation failed.
 * `<ILayer>   removeLayer( <ILayer> layer )`: Removes a layer from the list. Returns a layer that was removed, or `null` if operation failed.
 * `           moveLayer( <ILayer> layer, <Boolean> moveDown )`: moves a layer in the list either up or down.
 
@@ -101,7 +115,7 @@ When active, the layer switcher emits following Leaflet events:
 | `selectionchanged` | `{ <ILayer> selected, <String> selectedId }` | A user has changed active layer.
 | `layerschanged` | `{ <String[]> layerIds }` | List of layers has been changed (only when it is editable).
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/StaticLayerSwitcher.js)
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/StaticLayerSwitcher.js)
 
 ``` javascript
 map.addControl(L.staticLayerSwitcher([
@@ -122,7 +136,10 @@ The object has some methods to simplify working with the layer list:
 * `<String[]> getSortedKeys()`: returns a sorted list of layer keys (every key is essentially a human-readable label).
 * `<Boolean>  requiresKey( <String> id )`: checks if the layer for a given id requires a developer key.
 * `<String>   getKeyLink( <String> id )`: returns an URL for a developer key required for a layer, or an empty string if there is no URL or the layer does not need a key.
-* `<ILayer[]> getLeafletLayers( <String[]> ids, <Leaflet> L )`: converts an array of ids to array of layers ready to be added to a Leaflet map.
+* `<String>   getLayerName( <String> id )`: return a name for the layer. Processes keys (`'Bing Imagery:87f292f'`) and custom names (`'A mapbox layer|MapBox:key'`).
+* `<ILayer>   getLeafletLayer( <String> id, <Leaflet> L )`: converts an id to a layer ready to be added to a Leaflet map.
+* `<ILayer[]> getLeafletLayers( <String[]> ids, <Leaflet> L )`: converts an array of ids to array of layers ready to be added to a Leaflet map. Enforces the first layer to be OSM-based.
+* `<Boolean>  isOpenStreetMapLayer( layer )`: check that the layer (either `id` string or `ILayer` object) can be deemed OSM-based (or at least open).
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/layers/LayerList.js)
 
@@ -140,7 +157,7 @@ Every search control on the Leaflet plugins page has flaws. This is an attempt o
 * `title`: title text on the control.
 * `email`: e-mail address that will be sent to Nominatim server. It can be used for determining a source of suspicious activity. You should use this option, especially if the control is installed on a popular website.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/Leaflet.Search.js)
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/Leaflet.Search.js)
 
 ``` javascript
 map.addControl(L.control.search());
@@ -160,8 +177,9 @@ An export button for maps downloaded from an external service. Gets the supporte
 | `codeid` | String | `''` | Identifier of a map to export.
 | `types` | String[] | `[]` | List of supported formats (if empty, then it is downloaded).
 | `titles` | String[] | `[]` | Titles for supported formats (if empty, then it is downloaded).
+| `filter` | String[] | `[]` | If not empty, only types that are in this array are displayed.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/ExportButton.js)
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/ExportButton.js)
 
 ``` javascript
 map.addControl(L.exportControl({ codeid: 'nwrxs' }));
@@ -171,11 +189,11 @@ map.addControl(L.exportControl({ codeid: 'nwrxs' }));
 
 ## L.Control.PermalinkAttribution
 
-Replaces `L.Control.Attribution` with itself, so you won't have to do anything besides including the plugin script. Makes OpenStreetMap links in attribution into permanent links to the displayed place on osm.org website.
+Replaces `L.Control.Attribution` with itself, so you won't have to do anything besides including the plugin script. Makes OpenStreetMap links in attribution into permanent links to the displayed place on osm.org website. If other attribution links contain `{lat}`, `{lon}` and `{zoom}` substrings, they are replaced with actual coordinates and zoom level.
 
 An option `attributionEditLink` is added to `L.Map` class. If it is set to `true`, OSM links will be followed by an edit link.
 
-[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/PermalinkAttribution.js)
+[Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/PermalinkAttribution.js)
 
 <div class="map" id="mappa"></div>
 
