@@ -1,7 +1,7 @@
 ---
 layout: guide
 title: User's Guide
-maplang: English
+maplang: en
 ---
 
 This is a map. It behaves like any other map on the web: you can drag it, click "+" and "-" buttons to zoom in and out, change map layers with a button in top right corner. There are markers which sometimes open a popup when you click on them, and there are other geometrical figures that do nothing.

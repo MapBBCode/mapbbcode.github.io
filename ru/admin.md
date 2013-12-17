@@ -1,7 +1,7 @@
 ---
 layout: guide
 title: Руководство администратора
-maplang: Russian
+maplang: ru
 ---
 
 ## Панель конфигурации

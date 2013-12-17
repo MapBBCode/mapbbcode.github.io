@@ -20,7 +20,7 @@ mappi.addLayer(L.marker([-20, 100], { icon: L.popupIcon("(but I'm ok with that)"
 
 // L.FunctionButtons
 var mapfb = createMap('mapfb');
-var fb = L.functionButtons(['Saint-Petersburg', 'Hide buttons'], { position: 'topleft' });
+var fb = L.functionButtons([{ content: 'Saint-Petersburg' }, { content: 'Hide buttons'}], { position: 'topleft' });
 var fbspb = false;
 fb.on('clicked', function(data) {
 	if( data.idx == 0 ) {

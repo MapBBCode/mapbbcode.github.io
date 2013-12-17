@@ -48,7 +48,7 @@ When clicked, the control emits a Leaflet event `clicked` with a single data pro
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/FunctionButton.js)
 
 ```javascript
-var btn = L.functionButtons(['Saint-Petersburg', 'Hide buttons']);
+var btn = L.functionButtons([{ content: 'Saint-Petersburg' }, { content: 'Hide buttons'}]);
 btn.on('clicked', function(data) {
 	if( data.idx == 0 ) {
 		map.setView([59.939, 30.315], 13);

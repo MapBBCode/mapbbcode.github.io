@@ -1,7 +1,7 @@
 ---
 layout: guide
 title: Administrator's Guide
-maplang: English
+maplang: en
 ---
 
 ## Configuration Panel
