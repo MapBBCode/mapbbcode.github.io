@@ -4,17 +4,20 @@ title: MapBBCode Documentation
 toc: true
 ---
 
-On this website (please help us [translating](https://github.com/MapBBCode/mapbbcode.github.iohttps://github.com/MapBBCode/mapbbcode.github.io) those):
+On this website (please help us [translating](https://github.com/MapBBCode/mapbbcode.github.io) those):
 
 * [User's Guide](guide.html)
 * [Administrator's Guide](admin.html)
-* [Developer's Guide](tutorial.html)
 * [BBCode Specification](bbcode.html)
+* [Frequently Asked Questions](faq.html)
+* [MapBBCode Installations](forums.html)
+
+For developers:
+
+* [Developer's Guide](tutorial.html)
 * [API Reference](api.html)
 * [Leaflet Plugins](leaflet.html)
-* [Frequently Asked Questions](faq.html)
 * [Embedding MapBBCode](embedding.html)
-* [MapBBCode Installations](forums.html)
 
 Elsewhere:
 
