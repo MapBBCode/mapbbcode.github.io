@@ -65,7 +65,6 @@ Other options:
 | `popupIconLength` | Number | `30` | Maximum title length for using `L.PopupIcon` for markers.
 | `externalEndpoint` | String | *see source code* | URL of a map sharing server, for `showExternal()` and the upload button.
 | `uploadButton` | Boolean | `false` | Whether to allow uploading maps to a sharing server from editor.
-| `shareTag` | String | `'mapid'` | A bbcode tag for external map id. If empty, upload button is hidden and `showExternal()` method is disabled.
 | `polygonOpacity` | Number | `0.1` | Fill opacity for polygons.
 | `leafletOptions` | Object | `{}` | Additional options passed to `L.Map` constructor.
 | `hideInsideClasses` | String[] | `[]` | List of classes inside which map panel will not be displayed (useful for disabling maps in signatures).
@@ -123,6 +122,7 @@ complete regular expressions for the code and following methods:
 | `decimalDigits` | Number | 5 | Number of decimal digits in coordinates in generated bbcode.
 | `brackets` | String | `[]` | Brackets for bbcode. Can be replaced with `<>` or `()`.
 | `tagParams` | Boolean | `false` | If set to `true`, opening tag should be specified with parameters: `[map z="1" ll="2,3"]`. Together with `brackets` option this allows for HTML-like tags.
+| `shareTag` | String | `'mapid'` | A bbcode tag for external map id.
 
 Since brackets can be modified, there are some extra methods for getting opening and closing tags. All of them return strings.
 
