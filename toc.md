@@ -14,6 +14,7 @@ On this website (please help us [translating](https://github.com/MapBBCode/mapbb
 
 For developers:
 
+* [Configuration Wizard](wizard.html)
 * [Developer's Guide](tutorial.html)
 * [API Reference](api.html)
 * [Leaflet Plugins](leaflet.html)

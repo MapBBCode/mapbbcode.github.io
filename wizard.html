@@ -31,16 +31,15 @@ maplang: en
 </div>
 <div>
 <input type="checkbox" id="draw" name="draw">
-<label for="draw">include editor dependencies</label>
+<label for="draw">Include editor dependencies</label>
 </div>
 <div>
 <input type="checkbox" id="length" name="length">
-<label for="length">include length measurement handler</label>
+<label for="length">Include length measurement handler</label>
 </div>
 
 <p>Please read <a href="admin.html">Administrator's Guide</a> for a description of the panel and options below.</p>
 
-<!-- TODO: PROPRIETARY LAYERS -->
 <div>
 <select size="1" id="layers"></select> <input type="button" id="layeradd"/>
 <span id="bingkey"><span id="bingtitle"></span> <input type="text" size="60" id="keyvalue"/></span>
@@ -48,151 +47,35 @@ maplang: en
 <div id="map"></div>
 
 <div style="margin-top: 1em;">
+<input type="checkbox" id="switcher" name="switcher" checked>
+<label for="switcher">Hide layer list behind a button control</label>
+</div>
+<div>
 <input type="checkbox" id="upload" name="upload">
-<label for="upload">upload button</label>
+<label for="upload">Enable uploading maps to MapBBCode Share</label>
+</div>
+<div>
+<label for="shareurl">MapBBCode Share server address:</label><br>
+<input type="text" size="60" name="shareurl" id="shareurl" value="http://share.mapbbcode.org">
+</div>
+<div>
+<label for="outer">External link template, if a button is needed (parameters: {zoom}, {lat}, {lon}):</label><br>
+<input type="text" size="60" name="outer" id="outer" value="">
+</div>
+<div>
+<label for="tags">Allowed HTML tags in popups (regular expression):</label><br>
+<input type="text" size="60" name="tags" id="tags" value="[auib]|span|br|em|strong|tt">
 </div>
 
 </form>
 
 <h2>The Code</h2>
 
+<div>
+<input type="checkbox" id="example" name="example">
+<label for="example">Create a sample map</label>
+</div>
+
 <pre id="code"></pre>
 
-<script type="text/javascript" src="/lib/proprietary/Bing.js"></script>
-<script type="text/javascript" src="/lib/proprietary/Google.js"></script>
-<script type="text/javascript" src="/lib/proprietary/Yandex.js"></script>
-<script type="text/javascript" src="/lib/proprietary/2GIS.js"></script>
-<script type="text/javascript" src="/lib/proprietary/Nokia.js"></script>
-<script type="text/javascript" src="/lib/proprietary/Esri.js"></script>
-<script type="text/javascript">
-var mapbb, config, form = document.forms['f'];
-L.DomEvent.on(window, 'load', function() {
-	mapbb = new MapBBCode().options;
-	config = new MapBBCodeConfig({ layers: ['OpenStreetMap'] });
-	config.bindLayerAdder({
-		select: 'layers',
-		button: 'layeradd',
-		keyBlock: 'bingkey',
-		keyTitle: 'bingtitle',
-		keyValue: 'keyvalue',
-		keyBlockDisplay: 'inline'
-	});
-	config.on('show change', update);
-	config.show('map');
-
-	// todo: add update() listener to all input fields
-	var fields = document.getElementsByTagName('input');
-	for( var i = 0; i < fields.length; i++ ) {
-		L.DomEvent.on(fields[i], 'click', update);
-	}
-	L.DomEvent.on(form.elements['lang'], 'change', update);
-});
-
-function value(name) {
-	var el = form.elements[name];
-	if( el.length && el.length > 1 ) {
-		// radio buttons
-		for( var i = 0; i < el.length; i++ )
-			if( el[i].checked || el[i].selected )
-				return el[i].value;
-	}
-	return el.type == 'checkbox' ? el.checked : el.value; // todo: value
-}
-
-function mapbbConfig() {
-	var res = {}, o = config.options, i,
-		std = 'defaultZoom,fullFromStart,fullViewHeight,viewWidth,viewHeight,editorHeight,windowWidth,windowHeight'.split(',');
-	if( !(o.layers.length == 1 && o.layers[0] == 'OpenStreetMap') )
-		res.layers = '"' + o.layers.join(',') + '"';
-	if( o.defaultPosition[0] != mapbb.defaultPosition[0] || o.defaultPosition[1] != mapbb.defaultPosition[1] )
-		res.defaultPosition = '[' + o.defaultPosition.join(', ') + ']';
-	for( i = 0; i < std.length; i++ ) {
-		var opt = std[i];
-		if( o[opt] != mapbb[opt] )
-			res[opt] = o[opt];
-	}
-
-	if( value('upload') != mapbb.uploadButton )
-		res.uploadButton = value('upload') ? 'true' : 'false';
-
-	return res;
-}
-
-function printOptions(res, indent) {
-	var indentStr = '', str = [];
-	if( indent )
-		while( indent-- > 0 )
-			indentStr += '\t';
-	for( var i in res )
-		if( res.hasOwnProperty(i) )
-			str.push(indentStr + '\t' + i + ': ' + (typeof res[i] === 'object' ? printOptions(res[i], (indent||0) + 1) : res[i]));
-	return str.length ? '{\n' + str.join(',\n') + '\n' + indentStr + '}' : '{}';
-}
-
-function findProprietary(layers) {
-	var res = {}, i, l;
-	for( i = 0; i < layers.length; i++ ) {
-		l = layers[i];
-		if( l == 'Bing' )
-			res.Bing = true;
-		else if( l.indexOf('Google') >= 0 )
-			res.Google = true;
-		else if( l.indexOf('Yandex') >= 0 )
-			res.Yandex = true;
-		else if( l.indexOf('2GIS') >= 0 )
-			res['2GIS'] = true;
-		else if( l.indexOf('Nokia') >= 0 )
-			res.Nokia = true;
-		else if( l.indexOf('Esri') >= 0 || l.indexOf('National G') >= 0 )
-			res.Esri = true;
-	}
-	var ar = [];
-	for( i in res )
-		ar.push(i);
-	return ar;
-}
-
-function update() {
-	var pathFixed = value('cdn') == '1' ? '//cdn.jsdelivr.net/mapbbcode/1.2.0/' : value('path');
-	if( pathFixed.length > 0 && pathFixed.substring(pathFixed.length - 1) !== '/' )
-		pathFixed += '/';
-	var str = '', i, mapbbcfg = mapbbConfig(), proprietary = findProprietary(config.options.layers);
-	if( value('loader') == '0' ) {
-		str += '<link rel="stylesheet" type="text/css" href="' + pathFixed + 'leaflet.css" />\n';
-		if( value('draw') )
-			str += '<link rel="stylesheet" type="text/css" href="' + pathFixed + 'leaflet.draw.css" />\n';
-		str += '<script type="text/javascript" src="' + pathFixed + 'leaflet.js"><' + '/script>\n';
-		if( value('draw') )
-			str += '<script type="text/javascript" src="' + pathFixed + 'leaflet.draw.js"><' + '/script>\n';
-		if( !(config.options.layers.length == 1 && config.options.layers[0] == 'OpenStreetMap' ) )
-			str += '<script type="text/javascript" src="' + pathFixed + 'LayerList.js"><' + '/script>\n';
-		for( i = 0; i < proprietary.length; i++ )
-			str += '<script type="text/javascript" src="' + pathFixed + 'proprietary/' + proprietary[i] + '.js"><' + '/script>\n';
-		if( value('length') )
-			str += '<script type="text/javascript" src="' + pathFixed + 'Handler.Length.js"><' + '/script>\n';
-		if( value('lang') )
-			str += '<script type="text/javascript" src="' + pathFixed + 'lang/' + value('lang') + '.js"><' + '/script>\n';
-		mapbbcfg.windowPath = '"' + pathFixed + '"'; // todo: defaults, cdn
-		str += 'var mapBB = new MapBBCode(' + printOptions(mapbbcfg) + ');';
-	} else {
-		var lopt = { mapBBCodeOptions: mapbbcfg };
-		// todo: windowRelPath
-		if( value('lang') )
-			lopt.language = value('lang');
-		if( value('draw') )
-			lopt.draw = true;
-		if( value('length') )
-			lopt.addons = '["Handler.Length"]';
-		if( proprietary.length ) {
-			var p = [];
-			for( i = 0; i < proprietary.length; i++ )
-				p.push('"' + proprietary[i] + '"');
-			lopt.proprietary = '[' + p.join(', ') + ']';
-		}
-		str += '<script type="text/javascript" src="' + pathFixed + 'MapBBCodeLoader.min.js"><' + '/script>\n';
-		str += '<script type="text/javascript">mapBBCodeLoaderOptions.set(' + printOptions(lopt) + ');</' + '/script>';
-	}
-	str = str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	document.getElementById('code').innerHTML = str;
-}
-</script>
+{% include codegen.html %}

@@ -1,0 +1,81 @@
+---
+layout: guide
+title: Мастер настройки MapBBCode
+maplang: ru
+---
+
+<form action="#" name="f" onsubmit="javascript:return false;" style="margin-top: 1em;">
+<div>
+<input type="radio" name="loader" id="loader0" value="0" checked> <label for="loader0">Обычный MapBBCode</label>
+<input type="radio" name="loader" id="loader1" value="1"> <label for="loader1">MapBBCode Loader</label>
+</div>
+<div>
+<label for="path">Путь к библиотекам:</label>
+<input type="radio" name="cdn" value="0" checked>
+<input type="text" id="path" size="40" name="path" value="mapbbcode/">
+<input type="radio" name="cdn" id="pathcdn1" value="1">
+<label for="pathcdn1">CDN</label>
+</div>
+<div>
+<label for="wpath">Путь к <code>mapbbcode-window.html</code>:</label>
+<input type="text" id="wpath" size="30" name="wpath" value="mapbbcode/" disabled>
+<input type="checkbox" id="wpathm" name="wpathm" checked> <label for="wpathm">рядом с MapBBCode</label>
+</div>
+<div>
+<label for="lang">Язык:</label>
+<select id="lang" size="1" name="lang">
+	<option value="">по умолчанию</option>
+	<option value="en">Английский</option>
+	<option value="ru">Русский</option>
+</select>
+</div>
+<div>
+<input type="checkbox" id="draw" name="draw">
+<label for="draw">Добавить библиотеки для редактора</label>
+</div>
+<div>
+<input type="checkbox" id="length" name="length">
+<label for="length">Добавить модуль отображения длины линий</label>
+</div>
+
+<p>За описанием панели и настроек ниже обратитесь к <a href="admin.html">руководству администратора</a>.</p>
+
+<div>
+<select size="1" id="layers"></select> <input type="button" id="layeradd"/>
+<span id="bingkey"><span id="bingtitle"></span> <input type="text" size="60" id="keyvalue"/></span>
+</div>
+<div id="map"></div>
+
+<div style="margin-top: 1em;">
+<input type="checkbox" id="switcher" name="switcher" checked>
+<label for="switcher">Спрятать список слоёв за кнопкой</label>
+</div>
+<div>
+<input type="checkbox" id="upload" name="upload">
+<label for="upload">Позволить загрузку карт в MapBBCode Share</label>
+</div>
+<div>
+<label for="shareurl">Адрес сервера MapBBCode Share:</label><br>
+<input type="text" size="60" name="shareurl" id="shareurl" value="http://share.mapbbcode.org">
+</div>
+<div>
+<label for="outer">Шаблон внешней ссылки, если нужна кнопка (параметры: {zoom}, {lat}, {lon}):</label><br>
+<input type="text" size="60" name="outer" id="outer" value="">
+</div>
+<div>
+<label for="tags">Допустимые HTML-теги во всплывающих панелях (регулярное выражение):</label><br>
+<input type="text" size="60" name="tags" id="tags" value="[auib]|span|br|em|strong|tt">
+</div>
+
+</form>
+
+<h2>Готовый код</h2>
+
+<div>
+<input type="checkbox" id="example" name="example">
+<label for="example">Добавить пример карты</label>
+</div>
+
+<pre id="code"></pre>
+
+{% include codegen.html %}

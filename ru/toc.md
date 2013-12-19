@@ -14,6 +14,7 @@ toc: true
 
 Разработчикам:
 
+* [Мастер настройки MapBBCode](wizard.html)
 * [Руководство разработчика](../tutorial.html) (англ.)
 * [Справочник по API](../api.html) (англ.)
 * [Плагины для Leaflet](../leaflet.html) (англ.)
