@@ -30,6 +30,7 @@ An icon that looks like a popup panel, but significantly smaller. Title should b
 | Option | Type | Default | Description
 |---|---|---|---
 | `width` | Number | `150` | Maximum icon width.
+| `color` | String | `'white'` | Background CSS color.
 | `selectable` | Boolean | `false` | If set, text on the icon can be selected, but marker cannot be clicked or dragged.
 
 [Download](https://raw.github.com/MapBBCode/mapbbcode/master/src/controls/PopupIcon.js)

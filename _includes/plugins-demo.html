@@ -15,7 +15,7 @@ mapli.addLayer(L.marker([11, 42], { icon: L.letterIcon('42', { color: 'red' }) }
 
 // L.PopupIcon
 var mappi = createMap('mappi');
-mappi.addLayer(L.marker([11, 22], { clickable: false, icon: L.popupIcon("No, you don't have to click me", { selectable: true }) }));
+mappi.addLayer(L.marker([11, 22], { clickable: false, icon: L.popupIcon("No, you don't have to click me", { selectable: true, color: 'yellow' }) }));
 mappi.addLayer(L.marker([-20, 100], { icon: L.popupIcon("(but I'm ok with that)") }).bindPopup('Popup on a popup. Oh, the irony.'));
 
 // L.FunctionButtons
