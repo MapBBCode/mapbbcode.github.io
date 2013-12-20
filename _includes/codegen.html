@@ -127,7 +127,7 @@ function update() {
 		if( value('draw') )
 			str += '<script type="text/javascript" src="' + pathFixed + 'leaflet.draw.js"><' + '/script>\n';
 		str += '<script type="text/javascript" src="' + pathFixed + 'mapbbcode.js"><' + '/script>\n';
-		if( !(config.options.layers.length == 1 && config.options.layers[0] == 'OpenStreetMap' ) )
+		if( 'layers' in mapbbcfg )
 			str += '<script type="text/javascript" src="' + pathFixed + 'LayerList.js"><' + '/script>\n';
 		for( i = 0; i < proprietary.length; i++ )
 			str += '<script type="text/javascript" src="' + pathFixed + 'proprietary/' + proprietary[i] + '.js"><' + '/script>\n';
