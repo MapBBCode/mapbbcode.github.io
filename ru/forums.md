@@ -9,6 +9,8 @@ title: Где установлен MapBBCode
 * [VeloPiter](http://www.velopiter.spb.ru/forum/) (FUDforum, русский) — главный велосипедный форум в Санкт-Петербурге.
 * [Skif4x4](http://forum.skif4x4.ru/) (PunBB, русский) — внедорожные соревнования и покатушки в Краснодарском крае.
 * [Velo36](http://www.velo36.ru/forum/index.php) (phpBB 3, русский) — воронежский велофорум.
+* [Велобийск](http://velobiysk.ru/index.php) (phpBB 3, русский) — общение бийских велосипедистов.
 * [GIS-Lab](http://gis-lab.info/forum/) (phpBB 3, русский) — ГИС-энтузиасты, обсуждают преимущественно открытые проекты, вроде QGIS.
+* [Dubai Offroaders](http://www.dubaioffroaders.com/forums/viewforum.php?f=22) (phpBB 3, английский) — внедорожные покатушки в Дубаи.
 
 Если вы установили плагин и хотите добавить свой форум сюда, [свяжитесь с автором](mailto:zverik@textual.ru).
