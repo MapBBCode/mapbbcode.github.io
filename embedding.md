@@ -39,15 +39,10 @@ Usually there is a main theme, like `subSilver` or `proSilver` in phpBB. Find a 
 ```html
 <link rel="stylesheet" href="includes/mapbbcode/leaflet.css" />
 <link rel="stylesheet" href="includes/mapbbcode/leaflet.draw.css" />
-<!--[if lte IE 8]>
-    <link rel="stylesheet" href="includes/mapbbcode/leaflet.ie.css" />
-    <link rel="stylesheet" href="includes/mapbbcode/leaflet.draw.ie.css" />
-<![endif]-->
 <script src="includes/mapbbcode/leaflet.js"></script>
 <script src="includes/mapbbcode/leaflet.draw.js"></script>
 <script src="includes/mapbbcode/mapbbcode.js"></script>
-<script src="includes/mapbbcode/mapbbcode-config.js"></script>
-<script src="includes/mapbbcode/proprietary/Bing.js"></script>
+<script src="includes/mapbbcode/LayerList.js"></script>
 <script language="Javascript" type="text/javascript">
 <!--
 var mapBBcode = new MapBBCode({
@@ -130,7 +125,7 @@ Of course, some adminitrators would like to disable the interaction with externa
     
 ### Localization
 
-Translation strings for MapBBCode are kept in the library's directory, in `lang/{Language}.js` and `lang/{Language}.Config.js` files. You would need to include the file for a current language after `mapbbcode.js`. The name for the file can be kept in a plugin translation script.
+Translation strings for MapBBCode are kept in the library's directory, in `lang/{language}.js` and `lang/{language}.config.js` files. You would need to include the file for a current language after `mapbbcode.js`. The name for the file can be kept in a plugin translation script.
 
 ### Add-ons
 
@@ -159,7 +154,7 @@ All constructor options should be read in a page header. Most likely they alread
     uploadButton: {ENABLE_EXTERNAL},
     preferStandardLayerSwitcher: {STANDARD_SWITCHER}
 
-The last three properties are boolean, so you should either cast them to `true`/`false` in the initialization code, or use longer expressions:
+Note that {LAYERS} variable may contain apostrophes. The last three properties are boolean, so you should either cast them to `true`/`false` in the initialization code, or use longer expressions:
 
     property: '{PROPERTY)' === 'true' || '{PROPERTY}' === '1'
 
@@ -173,12 +168,8 @@ Configuration panels are usually separate files. Just use a regular key-value pa
 
 ```html
 <link rel="stylesheet" href="../includes/mapbbcode/leaflet.css" />
-<!--[if lte IE 8]>
-    <link rel="stylesheet" href="../includes/mapbbcode/leaflet.ie.css" />
-<![endif]-->
 <script src="../includes/mapbbcode/leaflet.js"></script>
 <script src="../includes/mapbbcode/mapbbcode-config.js"></script>
-<script src="../includes/mapbbcode/proprietary/Bing.js"></script>
 ```
 
 Eleven properties are edited with a javascript user interface, and in a form these are represented with hidden fields (your field names may be different, depending on a forum engine's coding style):

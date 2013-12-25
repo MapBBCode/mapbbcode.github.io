@@ -51,10 +51,6 @@ This issue is solved in MapBBCode 1.2.
 
 The button below "View/Edit" switcher control how the map will appear on forum/blog pages. Its settings make some values irrelevant. For example, when the editor is configured to be shown as an inline panel, editor window dimensions are not used, which is visualized with grayed-out values.
 
-**Why forum modules need `mapbbcode` directory?**
-
-It contains not only three files of the MapBBCode library, but also other libraries that may be useful, like a Bing imagery layer. Only one of those is available from CDN, Leaflet. Ideally the whole folder should be stored at a single location (of course, with an option to download all files, e.g. for an intranet forum), but there is a problem. I don't know where to get free and *reliable* CDN. If you know how to do it properly, please contact the author.
-
 **The whole library is essentially one file, right?**
 
 Yes. For example, using only `mapbbcode.js` you can visualize a bbcode or include a map from MapBBCode Share:
@@ -62,8 +58,8 @@ Yes. For example, using only `mapbbcode.js` you can visualize a bbcode or includ
 ```html
 <!DOCTYPE html>
 <meta charset="utf-8">
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
 <script src="mapbbcode.js"></script>
 <div id="test"></div>
 <script>
@@ -74,11 +70,11 @@ mapBB.showExternal('test', 'gttvz');
 
 **I want to display length while drawing lines**
 
-Include the `Param.Measure.js` script from the MapBBCode repository, and the measurement line will automatically appear in a feature popup panel. This and other example scripts in `param` directory demonstrate how to add functionality to the editor.
+Include the `Handler.Length.js` script from the MapBBCode repository, and the measurement line will automatically appear in tooltips and in a panel. This and other example scripts in `handlers` directory demonstrate how to add functionality to the editor.
 
 **Why one cannot add title text to lines and polygons?**
 
-Because it is not obvious visually whether you can click on an object or not, unlike markers, which are made for being clicked. You can override this, of course, by modifying `Param.Text.js` and making a custom build.
+Because it is not obvious visually whether you can click on an object or not, unlike markers, which are made for being clicked. You can override this, of course, by modifying `Handler.Text.js` and making a custom build.
 
 **Which layer is selected by default?**
 
@@ -102,10 +98,9 @@ window.layerList.list['Layer Name'] = 'L.tileLayer("http://...", { ... })';
 
 **Specifically, I want Google Maps in my forum**
 
-Google layers are not included because Google is evil. And sometimes charge for their maps. And you should promote free and open maps, that is, OpenStreetMap. But of course there is a way to add google maps to a forum, and since version 1.1, an easy one. Just add those two lines after `mapbbcode-config.js` but before `new MapBBCode()`:
+Google layers are not included by default because Google is evil. And sometimes charge for their maps. And you should promote free and open maps, that is, OpenStreetMap. But of course there is an easy way to add google maps to a forum. Just add the line after `LayerList.js` but before `new MapBBCode()`:
 
 ```html
-<script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
 <script src="{mapbbcode}/proprietary/Google.js"></script>
 ```
 
