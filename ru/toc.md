@@ -23,5 +23,6 @@ toc: true
 Также:
 
 * [Анонс в блоге ШТОСМ](http://shtosm.ru/all/karty-dlya-vseh-darom/)
+* [Статья на хабрахабре](http://habrahabr.ru/post/207232/)
 * [Обсуждение на форуме OpenStreetMap](http://forum.openstreetmap.org/viewtopic.php?id=23076)
 * [История версий библиотеки](https://github.com/MapBBCode/mapbbcode/blob/master/CHANGELOG.md)
