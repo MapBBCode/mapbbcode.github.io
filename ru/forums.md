@@ -10,6 +10,7 @@ title: Где установлен MapBBCode
 * [Skif4x4](http://forum.skif4x4.ru/) (PunBB, русский) — внедорожные соревнования и покатушки в Краснодарском крае.
 * [Velo36](http://www.velo36.ru/forum/index.php) (phpBB 3, русский) — воронежский велофорум.
 * [Велобийск](http://velobiysk.ru/index.php) (phpBB 3, русский) — общение бийских велосипедистов.
+* [Велокурск](http://www.velo-kursk.ru/forum/index.php) (phpBB 3, русский) — курский велофорум.
 * [GIS-Lab](http://gis-lab.info/forum/) (phpBB 3, русский) — ГИС-энтузиасты, обсуждают преимущественно открытые проекты, вроде QGIS.
 * [Dubai Offroaders](http://www.dubaioffroaders.com/forums/viewforum.php?f=22) (phpBB 3, английский) — внедорожные покатушки в Дубаи.
 
