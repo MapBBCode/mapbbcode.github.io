@@ -77,10 +77,10 @@ To reduce clutter, we'll define some base nonterminals with regular expressions.
     <coordinate>  ::= <number> "," <number>
     <coordinates> ::= <coordinate> | <coordinate> " " <coordinate>
     <title>       ::= <empty> | <noslash>
-    <words>       ::= <empty> | <word> | <word> "," <word>
+    <words>       ::= <empty> | <word> | <word> "," <words>
     <parameters>  ::= "(" <words> "|" <title> ")" | "(" <title> ")"
     <element>     ::= <coordinates> | <coordinates> <parameters>
-    <elements>    ::= <empty> | <element> | <element> ";" <element>
+    <elements>    ::= <empty> | <element> | <element> ";" <elements>
     <position>    ::= <zoom> | <zoom> "," <coordinate>
     <openingtag>  ::= "[map]" | "[map=" <position> "]"
     <map>         ::= <openingtag> <elements> "[/map]"
