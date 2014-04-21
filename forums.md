@@ -7,7 +7,8 @@ There are several ready-made plugins for adding MapBBCode to forums, and some fo
 
 * [SPb-Projects](http://spb-projects.ru/forum/) (phpBB 2, Russian) — where enthusiasts from Saint-Petersburg follow developments and construction news around the city and in Leningrad Region.
 * [VeloPiter](http://www.velopiter.spb.ru/forum/) (FUDforum, Russian) — the main cycling forum in Saint-Petersburg.
-* [Skif4x4](http://forum.skif4x4.ru/) (PunBB, Russian) — offroading in Krasnodar Krai.
+* [4х4 Krasnodar](http://forum.4x4krasnodar.ru/) (phpBB 3, Russian) — offroading in Krasnodar Krai.
+* [Skif4x4](http://forum.skif4x4.ru/) (PunBB, Russian) — biggest offroading club in Krasnodar Krai.
 * [Velo36](http://www.velo36.ru/forum/index.php) (phpBB 3, Russian) — cycling forum of Voronezh Region.
 * [GIS-Lab](http://gis-lab.info/forum/) (phpBB 3, Russian) — GIS enthusiasts in Russia, primarily open source projects, like GDAL and QGIS.
 

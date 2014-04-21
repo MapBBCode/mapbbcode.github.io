@@ -7,7 +7,8 @@ title: Где установлен MapBBCode
 
 * [SPb-Projects](http://spb-projects.ru/forum/) (phpBB 2, русский) — там общаются интересующиеся дорожным строительством в Петербурге и Ленинградской области.
 * [VeloPiter](http://www.velopiter.spb.ru/forum/) (FUDforum, русский) — главный велосипедный форум в Санкт-Петербурге.
-* [Skif4x4](http://forum.skif4x4.ru/) (PunBB, русский) — внедорожные соревнования и покатушки в Краснодарском крае.
+* [4х4 Краснодар](http://forum.4x4krasnodar.ru/) (phpBB 3, русский) — внедорожные соревнования и покатушки в Краснодарском крае.
+* [Skif4x4](http://forum.skif4x4.ru/) (PunBB, русский) — крупный внедорожный клуб в Краснодарском крае.
 * [Velo36](http://www.velo36.ru/forum/index.php) (phpBB 3, русский) — воронежский велофорум.
 * [Велобийск](http://velobiysk.ru/index.php) (phpBB 3, русский) — общение бийских велосипедистов.
 * [Велокурск](http://www.velo-kursk.ru/forum/index.php) (phpBB 3, русский) — курский велофорум.
