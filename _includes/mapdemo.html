@@ -21,7 +21,6 @@ window.onload = function() {
 		fullFromStart: true,
 		uploadButton: true,
 		createLayers: function(L) { return [
-			L.tileLayer('http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}', { name: 'OpenMapSurfer', attribution: 'Map &copy; <a href=\"http://openstreetmap.org\">OSM</a> | Tiles &copy; <a href=\"http://giscience.uni-hd.de/\">GIScience Heidelberg</a>', minZoom: 0, maxZoom: 19 }),
 			MapBBCode.prototype.createOpenStreetMapLayer(L),
 			L.bingLayer('AjO5XVNDp_3dZ1fa3MQs4lsJQP7MCYrHFxXFvi0yHCxpfNW1EaFZ_Ik5HecRHdSi', { name: 'Bing Satellite' })
 		]}
